@@ -153,7 +153,7 @@ export default function Education_form() {
           {experiences.map((exp) => (
             <div
               key={exp.id}
-              className="border rounded-2xl p-4 bg-white transition-all duration-300"
+              className="border rounded-2xl p-4 bg-white overflow-hidden transition-all duration-300"
             >
               {/* Header */}
               <div

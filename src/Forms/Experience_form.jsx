@@ -115,26 +115,26 @@ export default function Experience_form() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-useEffect(() => {
-  experiences.forEach((exp) => {
-    const picker = pickerRefs.current[exp.id];
-    const input = inputRefs.current[exp.id];
-    if (picker && input && exp.showPicker) {
-      const inputRect = input.getBoundingClientRect();
-      const pickerHeight = picker.offsetHeight;
-      const viewportHeight = window.innerHeight;
+// useEffect(() => {
+//   experiences.forEach((exp) => {
+//     const picker = pickerRefs.current[exp.id];
+//     const input = inputRefs.current[exp.id];
+//     if (picker && input && exp.showPicker) {
+//       const inputRect = input.getBoundingClientRect();
+//       const pickerHeight = picker.offsetHeight;
+//       const viewportHeight = window.innerHeight;
 
-      // If not enough space below, open upward
-      if (inputRect.bottom + pickerHeight + 8 > viewportHeight) {
-        picker.style.top = "auto";
-        picker.style.bottom = `${inputRect.height + 8}px`;
-      } else {
-        picker.style.bottom = "auto";
-        picker.style.top = `${inputRect.height + 8}px`;
-      }
-    }
-  });
-}, [experiences]);
+//       // If not enough space below, open upward
+//       if (inputRect.bottom + pickerHeight + 8 > viewportHeight) {
+//         picker.style.top = "auto";
+//         picker.style.bottom = `${inputRect.height + 8}px`;
+//       } else {
+//         picker.style.bottom = "auto";
+//         picker.style.top = `${inputRect.height + 8}px`;
+//       }
+//     }
+//   });
+// }, [experiences]);
 
   return (
 
@@ -150,7 +150,7 @@ useEffect(() => {
           {experiences.map((exp) => (
             <div
               key={exp.id}
-              className="border rounded-2xl p-4 bg-white transition-all duration-300"
+              className="border rounded-2xl p-4 overflow-hidden -z-40 bg-white transition-all duration-300"
             >
               {/* Header */}
               <div
@@ -338,7 +338,7 @@ useEffect(() => {
                     {exp.showPicker && (
                       <div
                         ref={(el) => (pickerRefs.current[exp.id] = el)}
-                        className="absolute right-10 mt-2 w-60 bg-white shadow-xl rounded-lg p-4 z-50"
+                        className="absolute right-10 -mt-24 w-60 bg-white shadow-xl rounded-lg p-4 z-[2147483647]"
                       >
                         {/* Year Header */}
                         <div className="flex justify-between items-center mb-3">

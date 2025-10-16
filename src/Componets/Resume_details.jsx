@@ -168,7 +168,7 @@ function Resume_details() {
                     </div>
                     {/* perivous */}
 
-                    <div className="bg-white p-4 mt-3 text-right rounded-lg flex justify-end ">
+                    <div className="bg-white p-4 mt-3 text-right rounded-lg flex justify-between  ">
                         {prevTab && (
                             <button
                                 className="bg-white text-[#374151] border border-gray-300 px-6 py-2 rounded-lg mr-3 font-nunito font-semibold hover:bg-gray-100 transition-colors duration-300"
