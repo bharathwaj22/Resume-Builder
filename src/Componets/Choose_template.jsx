@@ -14,6 +14,8 @@ import { Description } from '@headlessui/react';
 
 import { FaFolder, FaStar, FaPalette, FaFileAlt, FaUser, FaBriefcase } from "react-icons/fa";
 import { useNavigate } from 'react-router-dom';
+import Footer from '../Pages/Footer';
+import Header from '../Pages/Header';
 
 
 function Choose_template() {
@@ -249,8 +251,9 @@ function Choose_template() {
 
     return (
         <section className='bg-white'>
-            <div className='flex justify-between p-4 px-10 items-center'>
-                <div className='text-[#2e404a] text-[25px] font-nunito font-bold'>Aryu Resume</div>
+            <Header/>
+            <div className='flex justify-center p-4 px-10 items-center'>
+                {/* <div className='text-[#2e404a] text-[25px] font-nunito font-bold'>Aryu Resume</div> */}
                 <div className='flex justify-between mt-3'>
                     <div className="flex justify-center items-center ">
                         {steps.map((step, index) => {
@@ -295,7 +298,7 @@ function Choose_template() {
                         })}
                     </div>
                 </div>
-                <div className='w-[10%]'></div>
+                {/* <div className='w-[10%]'></div> */}
             </div>
 
 
@@ -424,6 +427,8 @@ function Choose_template() {
                 </div>
 
             </section>
+
+            <Footer/>
 
 
         </section>

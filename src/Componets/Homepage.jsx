@@ -23,6 +23,7 @@ import home4 from '../assets/images/home4.png'
 import home5 from '../assets/images/home5.png'
 
 import doubleresume from '../assets/images/doubleresume.png'
+import Footer from '../Pages/Footer'
 
 
 function Homepage() {
@@ -40,17 +41,17 @@ function Homepage() {
     }
 
     return (
-        <div className='pb-10'>
+        <div className=''>
             <Header />
             {/* home */}
 
             <section className='bg-[#edf9ff] '>
-                <div className='bg-[#edf9ff] px-20 flex justify-center gap-10 pt-10 pb-4'>
+                <div className='bg-[#edf9ff] px-10 flex justify-center gap-10 pt-10 pb-4'>
                     {/* left side */}
                     <div className='w-[50%] pt-5'>
                         <div className='flex gap-2 items-center'><div className='w-2 h-2 bg-green-500 rounded-full animate-pulse duration-[10ms] '></div><div><span className='text-[#2e404a] text-[16px] font-nunito font-bold'>52,551</span> <span className='text-[#44555f] text-[16px] font-nunito font-normal'>Best online resume builder templates</span></div></div>
 
-                        <h1 className='font-roboto text-[52px] text-[#2e404a] font-bold w-[80%] leading-[67.6px] mt-2'>  Build Your <span class="text-[#05A2FF]">Perfect Resume</span> in Minutes</h1>
+                        <h1 className='font-roboto text-[55px] text-[#2e404a] font-bold w-[80%] leading-[67.6px] mt-2'>  Build Your <span class="text-[#05A2FF]">Perfect Resume</span> in Minutes</h1>
                         <div className=' font-nunito text-[18px] text-[#2e404a] font-normal leading-[25.2px] mt-3'>Easily create a standout resume fast with templates you can customize to fit your style.</div>
 
                         <button className='border-2 border-[#05a2ff] hover:bg-[#0589d5] text-[16px] bg-[#05a2ff] p-3 px-5 rounded-lg text-white font-nunito font-bold cursor-pointer mt-5' onClick={clickchoosetemplate}>Create New Resume</button>
@@ -298,6 +299,9 @@ function Homepage() {
                     </div>
                 </div>
             </section>
+
+
+            <Footer/>
 
         </div>
     )
