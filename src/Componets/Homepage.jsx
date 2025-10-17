@@ -15,6 +15,9 @@ import { useNavigate } from 'react-router-dom'
 import { motion } from "framer-motion";
 import homegroup1 from '../assets/images/home-group1.svg'
 import homegroup2 from '../assets/images/home-group2.svg'
+import homegroup3 from '../assets/images/home-group3.svg'
+import homegroup4 from '../assets/images/home-group4.svg'
+import homegroup5 from '../assets/images/home-group5.png'
 
 import home1 from '../assets/images/home1.png'
 import home2 from '../assets/images/home2.png'
@@ -51,12 +54,12 @@ function Homepage() {
                     <div className='w-[50%] pt-5'>
                         <div className='flex gap-2 items-center'><div className='w-2 h-2 bg-green-500 rounded-full animate-pulse duration-[10ms] '></div><div><span className='text-[#2e404a] text-[16px] font-nunito font-bold'>52,551</span> <span className='text-[#44555f] text-[16px] font-nunito font-normal'>Best online resume builder templates</span></div></div>
 
-                        <h1 className='font-roboto text-[55px] text-[#2e404a] font-bold w-[80%] leading-[67.6px] mt-2'>  Build Your <span class="text-[#05A2FF]">Perfect Resume</span> in Minutes</h1>
-                        <div className=' font-nunito text-[18px] text-[#2e404a] font-normal leading-[25.2px] mt-3'>Easily create a standout resume fast with templates you can customize to fit your style.</div>
+                        <h1 className='font-roboto text-[60px] text-[#2e404a] font-bold w-[80%] leading-[67.6px] mt-3'>  Build Your <span class="text-[#05A2FF]">Perfect Resume</span> in Minutes</h1>
+                        <div className=' font-nunito text-[18px] text-[#2e404a] font-normal leading-[25.2px] mt-6'>Easily create a standout resume fast with templates you can customize to fit your style.</div>
 
-                        <button className='border-2 border-[#05a2ff] hover:bg-[#0589d5] text-[16px] bg-[#05a2ff] p-3 px-5 rounded-lg text-white font-nunito font-bold cursor-pointer mt-5' onClick={clickchoosetemplate}>Create New Resume</button>
+                        <button className='  border-2 border-[#05a2ff] hover:bg-[#0589d5] text-[16px] bg-[#05a2ff] p-3 px-5 rounded-lg text-white font-nunito font-bold cursor-pointer mt-10' onClick={clickchoosetemplate}>Create New Resume</button>
 
-                        <div class="flex items-center  gap-8 rounded-lg mt-8">
+                        <div class="flex items-center  gap-8 rounded-lg mt-10">
                             <div class=" items-center">
                                 <div class="text-green-400   bg-green-100 px-3 py-1 rounded-md w-fit font-nunito font-semibold text-[22px]">
                                     48%
@@ -81,28 +84,11 @@ function Homepage() {
 
                     </div>
                     {/* right side */}
-                    <div className='w-[50%]  flex justify-center '>
+                    <div className='w-[50%]  flex justify-center    '>
 
 
-                        {/* <motion.div
-                            className="rounded-xl w-[70%] bg-slate-700 "
-                            initial={{ opacity: 0, scale: 0.9, y: 20 }}
-                            animate={{ opacity: 1, scale: 1, y: 0 }} 
-                            transition={{ duration: 1, ease: "easeOut" }}
-                            // whileHover={{ scale: 1.05 }} 
-                        >
-                            <img
-                                src={HomeImage}
-                                alt="Home"
-                                className="w-full h-fit  object-cover"
-                            />
-                            <img src={homegroup1} alt="homegroup1" className='absolute top-0 left-0 w-32 h-32' />
-                            <img src={homegroup2} alt="homegroup2" className='absolute bottom-0 right-0 w-32 h-32' />
 
-                        </motion.div> */}
-
-                        <div className="relative flex justify-center mt-5 h-full   w-[70%] ">
-                            {/* Main Image with fade + scale animation */}
+                        {/* <div className="relative flex justify-center mt-5 h-full   w-[70%] ">
                             <motion.div
                                 className="rounded-xl w-[80%] h-full relative overflow-hidden pt-5 "
                                 initial={{ opacity: 0, scale: 0.9, y: 20 }}
@@ -119,7 +105,7 @@ function Homepage() {
                             </motion.div>
                             <motion.div
                                 className="absolute top-0 left-0 w-full h-full z-50"
-                                animate={{ y: [0, -10, 0] }} // move container up and down
+                                animate={{ y: [0, -10, 0] }} 
                                 transition={{
                                     duration: 3,
                                     repeat: Infinity,
@@ -127,20 +113,112 @@ function Homepage() {
                                     ease: "easeInOut",
                                 }}
                             >
-                                {/* Top-right image */}
                                 <img
                                     src={homegroup1}
                                     alt="homegroup1"
                                     className="absolute top-5 right-10 w-12 h-12 shadow-lg "
                                 />
 
-                                {/* Bottom-left image */}
                                 <img
                                     src={homegroup2}
                                     alt="homegroup2"
                                     className="absolute top-20 right-10 w-12 h-12 shadow-lg "
                                 />
                             </motion.div>
+                        </div> */}
+
+                        <div className="relative flex justify-center items-center  mt-5 h-full   w-[90%]">
+
+                            {/* White circular background */}
+                            <motion.div
+                                className="absolute bg-[#ffffffad] rounded-full  w-[500px] h-[500px] z-0"
+                            // initial={{ opacity: 0, scale: 0.8 }}
+                            // animate={{ opacity: 1, scale: [1, 1.05, 1] }} 
+                            // transition={{
+                            //     duration: 4,
+                            //     ease: "easeInOut",
+                            //     repeat: Infinity,
+                            //     repeatType: "mirror",
+                            // }}
+                            ></motion.div>
+
+                            {/* Main Image (appears over the white circle) */}
+                            <motion.div
+                                className="relative z-10 w-[60%] h-auto"
+                                initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                                animate={{ opacity: 1, scale: 1, y: 0 }}
+                                transition={{ duration: 1, ease: "easeOut" }}
+                            >
+                                <img
+                                    src={HomeImage}
+                                    alt="Home"
+                                    className="w-full h-auto object-contain"
+                                />
+                            </motion.div>
+
+                            {/* Floating animated icons */}
+                            <motion.div
+                                className="absolute -top-8 left-10 w-full h-full z-20"
+                                animate={{ y: [0, -10, 0] }}
+                                transition={{
+                                    duration: 3,
+                                    repeat: Infinity,
+                                    repeatType: "loop",
+                                    ease: "easeInOut",
+                                }}
+                            >
+                                {/* Top-right floating image */}
+                                <img
+                                    src={homegroup1}
+                                    alt="homegroup1"
+                                    className="absolute top-8 right-[25%] w-12 h-12 shadow-lg"
+                                />
+
+                                {/* Bottom-right floating image */}
+                                <img
+                                    src={homegroup2}
+                                    alt="homegroup2"
+                                    className="absolute top-24 right-[25%] w-12 h-12 shadow-lg"
+                                />
+                            </motion.div>
+
+                            {/* sider */}
+
+                            <motion.div
+                                className="absolute -top-8 right-[40%] w-full h-full z-20"
+                                initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                                animate={{ opacity: 1, scale: 1, y: 0 }}
+                                transition={{ duration: 1, ease: "easeOut" }}
+                            >
+                                {/* Top-right floating image */}
+                                <img
+                                    src={homegroup3}
+                                    alt="homegroup1"
+                                    className="absolute top-56 right-[25%] w-36 h-36 "
+                                />
+
+                                {/* Bottom-right floating image */}
+                                <img
+                                    src={homegroup4}
+                                    alt="homegroup2"
+                                    className="absolute bottom-10 right-[25%] w-28 h-28 "
+                                />
+                            </motion.div>
+                            {/* downer */}
+
+                            <div
+                                className="absolute -top-8 left-0 w-full h-full z-20"
+
+                            >
+
+
+                                {/* Bottom-right floating image */}
+                                <img
+                                    src={homegroup5}
+                                    alt="homegroup2"
+                                    className="absolute bottom-1 right-[25%] w-44 h-28 "
+                                />
+                            </div>
                         </div>
 
                     </div>
@@ -265,7 +343,7 @@ function Homepage() {
                 </div>
 
                 <div className='flex justify-center'>
-                    <button className="mt-5 px-6 py-3 bg-[#05a2ff] text-white font-semibold rounded-lg  transition hover:bg-[#0589d5] ">
+                    <button className="mt-5 px-6 py-3 bg-[#05a2ff] text-white font-semibold rounded-lg  transition hover:bg-[#0589d5] " onClick={clickchoosetemplate}>
                         Create My Resume for Free
                     </button>
                 </div>
@@ -289,7 +367,7 @@ function Homepage() {
                             <div className='text-white text-[16px] font-nunito font-normal  text-center mt-5'>It’s easier with BetterCV. Build a professional, job-winning resume in minutes!</div>
 
                             <div className='flex justify-center '>
-                                <button className="mt-5 px-6 py-3 bg-[#05a2ff] hover:bg-[#0875b4] cursor-pointer text-white font-semibold rounded-lg  transition ">
+                                <button className="mt-5 px-6 py-3 bg-[#05a2ff] hover:bg-[#0875b4] cursor-pointer text-white font-semibold rounded-lg  transition " onClick={clickchoosetemplate}>
                                     Land My Dream Job
                                 </button>
                             </div>
@@ -301,7 +379,7 @@ function Homepage() {
             </section>
 
 
-            <Footer/>
+            <Footer />
 
         </div>
     )
