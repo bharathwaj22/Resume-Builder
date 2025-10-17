@@ -9,8 +9,19 @@ import Image5 from '../assets/images/resume5.svg.svg'
 import Image6 from '../assets/images/resume6.svg.svg'
 import Image7 from '../assets/images/resume7.svg.svg'
 import Image8 from '../assets/images/resume8.svg.svg'
+import { useNavigate } from "react-router-dom";
 
 function Resume_sider() {
+     const nagivate = useNavigate();
+
+    const clickchoosetemplate = () => {
+        nagivate('/choose-template')
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+        });
+    }
   const responsive = {
     superLargeDesktop: {
       breakpoint: { max: 4000, min: 3000 },
@@ -61,7 +72,7 @@ function Resume_sider() {
         <p className="mt-4 text-[16px] font-nunito max-w-3xl mx-auto">
           Build a professional, error-free, and ATS-friendly resume in minutes with our AI-powered generator. Explore 40+ modern templates.
         </p>
-        <button className="mt-8 bg-white text-[#05a2ff] font-semibold py-3 px-8 rounded-lg hover:bg-blue-100 shadow-lg transition duration-300">
+        <button className="mt-8 bg-white text-[#05a2ff] font-semibold py-3 px-8 rounded-lg hover:bg-blue-100 shadow-lg transition duration-300" onClick={clickchoosetemplate}>
           View All Templates
         </button>
       </div>
@@ -104,7 +115,7 @@ function Resume_sider() {
 
         </Carousel>
         <div className='flex justify-center absolute w-full bottom-28'>
-          <button className="mt-5 px-6 py-3 bg-[#05a2ff] hover:bg-[#0589d5] text-white font-semibold rounded-lg  transition ">
+          <button className="mt-5 px-6 py-3 bg-[#05a2ff] hover:bg-[#0589d5] text-white font-semibold rounded-lg  transition "  onClick={clickchoosetemplate}>
             Use This Template
           </button>
         </div>
