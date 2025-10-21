@@ -166,7 +166,7 @@ const ContactCards = () => {
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.2 }} // 👈 triggers when 20% of section is visible
-      className="w-full bg-white py-12 flex flex-col md:flex-row p-10 mt-5 gap-6 justify-center items-stretch"
+      className="w-full bg-white py-12 flex flex-col md:flex-row  p-5 md:p-10 mt-5 gap-6 justify-center items-stretch"
     >
       {cards.map((card, index) => (
         <motion.div

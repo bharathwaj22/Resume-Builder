@@ -32,3 +32,10 @@ input{
 
 
 
+/* Custom style for Dropdown filter input */
+
+.p-dropdown-header{
+   border: 1px solid #05a2ff !important; /* Darker blue on focus */
+  /* box-shadow: 0 0 0 2px #93c5fd !important; */
+}
+

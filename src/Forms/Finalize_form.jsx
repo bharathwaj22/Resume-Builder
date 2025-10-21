@@ -601,6 +601,16 @@ import {
 } from "react-icons/fi";
 import { Editor } from 'primereact/editor';
 
+import Final_image1 from "../assets/images/final/final-img1.png"
+import Final_image2 from "../assets/images/final/final-img2.png"
+import Final_image3 from "../assets/images/final/final-img3.png"
+import Final_image4 from "../assets/images/final/final-img4.png"
+import Final_image5 from "../assets/images/final/final-img5.png"
+import Final_image6 from "../assets/images/final/final-img6.png"
+import Final_image7 from "../assets/images/final/final-img7.png"
+
+
+
 import { Description } from "@headlessui/react";
 
 
@@ -614,13 +624,13 @@ export default function FinalizeForm() {
   const [selected, setSelected] = useState(2);
   const stepWidth = 55;
   const sections = [
-    { title: "Languages", icon: <FiBook size={20} />, description: "If relevant, add your native language and any foreign languages you know." },
-    { title: "Certifications and licenses", icon: <FiAward size={20} />, description: "Add credentials that back up your expertise." },
-    { title: "Hobbies and interests", icon: <FiAward size={20} />, description: "Include activities relevant to your job or industry." },
-    { title: "Awards and honors", icon: <FiAward size={20} />, description: "Share achievements and milestones you’re proud of." },
-    { title: "Websites and social media", icon: <FiGlobe size={20} />, description: "Share your portfolio, blog, LinkedIn, or other related websites." },
-    { title: "References", icon: <FiUser size={20} />, description: "This builds trust and confidence in your candidacy." },
-    { title: "Custom section", icon: <FiEdit3 size={20} />, description: "Create a custom section for any extra info you’d like to add." },
+    { title: "Languages", icon: <img src={Final_image1} alt="Languages" className="w-5 h-5" />, description: "If relevant, add your native language and any foreign languages you know." },
+    { title: "Certifications and licenses", icon: <img src={Final_image2} alt="Languages" className="w-5 h-5" />, description: "Add credentials that back up your expertise." },
+    { title: "Hobbies and interests", icon: <img src={Final_image3} alt="Languages" className="w-5 h-5" />, description: "Include activities relevant to your job or industry." },
+    { title: "Awards and honors", icon: <img src={Final_image4} alt="Languages" className="w-5 h-5" />, description: "Share achievements and milestones you’re proud of." },
+    { title: "Websites and social media", icon:<img src={Final_image5} alt="Languages" className="w-5 h-5" />, description: "Share your portfolio, blog, LinkedIn, or other related websites." },
+    { title: "References", icon: <img src={Final_image6} alt="Languages" className="w-5 h-5" />, description: "This builds trust and confidence in your candidacy." },
+    { title: "Custom section", icon: <img src={Final_image7} alt="Languages" className="w-5 h-5" />, description: "Create a custom section for any extra info you’d like to add." },
   ];
 
   const initialSkillData = {};
@@ -744,10 +754,10 @@ export default function FinalizeForm() {
 
                       {/* Text content */}
                       <div>
-                        <div className="text-[#2E404A] font-nunito font-bold text-[16px] group-hover:text-[#24b3f6] ">
+                        <div className="text-[#2E404A] font-nunito font-bold text-[12px] md:text-[16px] group-hover:text-[#24b3f6] ">
                           {section.title}
                         </div>
-                        <div className="text-[#2E404A] font-nunito font-normal text-[14px] group-hover:text-[#24b3f6]">
+                        <div className=" hidden md:flex text-[#2E404A] font-nunito font-normal text-[14px] group-hover:text-[#24b3f6]">
                           {section.description}
                         </div>
                       </div>
@@ -785,9 +795,9 @@ export default function FinalizeForm() {
 
 
                     {skillsData[section.title]?.map((skill, index) => (
-                      <div key={skill.id} className="flex justify-between items-center gap-3 ">
+                      <div key={skill.id} className="flex  justify-end md:justify-between flex-wrap-reverse md:flex-nowrap items-center gap-3 ">
                         {section.title === "Languages" && (
-                          <div className="flex justify-between items-start gap-4 w-full ">
+                          <div className="flex flex-wrap justify-between items-start gap-4 w-full ">
                             {/* Skill input */}
                             <div className="flex-1 ">
                               <label className="block text-[#374151] text-[16px] font-nunito font-normal mb-1">
@@ -1018,7 +1028,7 @@ export default function FinalizeForm() {
                             <FiTrash2 size={18} />
                           </button>
                         </div> */}
-                        <div>
+                        <div className="">
                           {!["Certifications and licenses", "Awards and honors", "References"].includes(section.title) && (
                             <button
                               onClick={() => deleteSkill(section.title, skill.id)}
@@ -1080,7 +1090,7 @@ export default function FinalizeForm() {
                 <button
                   key={idx}
                   onClick={() => handleToggleSection(section.title)}
-                  className="w-[48%] px-4 py-5 border rounded-lg bg-[#f7f9fc] 
+                  className="w-full md:w-[48%] px-4 py-5 border rounded-lg bg-[#f7f9fc] 
                      hover:bg-[#f6fcff] transition-all duration-300 font-semibold flex justify-between items-center group"
                 >
                   <div className="flex items-center gap-2">

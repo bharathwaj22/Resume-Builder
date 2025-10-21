@@ -5,6 +5,12 @@ import Contactimage from "../assets/images/contact-us.webp"
 import ContactCards from "./ContactCards";
 import Faq from "./Faq";
 import Footer from "./Footer";
+// import { API_URL } from "../Config";
+import Swal from "sweetalert2";
+import axios from "axios";
+
+
+
 
 
 function Contact() {
@@ -30,14 +36,55 @@ function Contact() {
 
 
     const [firstName, setFirstName] = useState("");
+    console.log("firstName", firstName)
     const [firstTouched, setFirstTouched] = useState(false);
 
     const [lastName, setLastName] = useState("");
     const [lastTouched, setLastTouched] = useState(false);
 
     const [message, setMessage] = useState("")
+    const [errors, setErrors] = useState("")
 
-    const [showAdditional, setShowAdditional] = useState(false);
+    const handlesubmit = async (e) => {
+        e.preventDefault();
+        try {
+            const formData = {
+                name: firstName,
+                email: lastName,
+
+                message: message,
+            };
+
+            console.log("formData", formData)
+
+            const response = await axios.post(
+                `${API_URL}/api/contacts/create`,
+                formData
+            );
+            console.log("response:", response);
+            Swal.fire({
+                icon: "success",
+                title: "Contact added successfully!",
+                showConfirmButton: true,
+                timer: 1500,
+            });
+
+
+
+            setErrors({});
+        } catch (err) {
+              Swal.fire({
+            icon: "error",
+            title: "Contact addition failed",
+            showConfirmButton: true,
+            timer: 1500,
+        });
+            setErrors(err.response);
+
+        }
+    };
+
+    // const [showAdditional, setShowAdditional] = useState(false);
 
 
     const isValid = (value, touched) => touched && value.trim() !== "";
@@ -53,12 +100,12 @@ function Contact() {
                     variants={containerVariants}
                     initial="hidden"
                     animate="visible"
-                    className="p-8 md:p-12 mb-5 font-roboto "
+                    className="p-5 md:p-12 mb-5 font-roboto "
                 >
-                    <h1 className="font-roboto font-bold text-[52px] text-[#2e404a] text-center mt-14">
+                    <h1 className="font-roboto font-bold text-[35px] md:text-[52px] text-[#2e404a] text-center mt-14">
                         Contact us
                     </h1>
-                    <p className="font-nunito text-[18px] text-[#0a3370] font-normal text-center ">
+                    <p className="font-nunito text-[14px] md:text-[18px] text-[#0a3370] font-normal text-center ">
                         If you need assistance with our service or have any questions, don't hesitate to get
                         <p>in touch with us.</p>
                     </p>
@@ -66,8 +113,8 @@ function Contact() {
 
 
                 <div className='flex justify-center  '>
-                    <div className="w-[60%] flex justify-center ">
-                        <div className="bg-white w-[70%] border-2 border-gray-300 rounded-md p-5">
+                    <div className=" w-full md:w-[60%] flex justify-center ">
+                        <div className="bg-white w-full md:w-[70%] border-2 border-gray-300 rounded-md p-5">
                             <div className="flex gap-10 justify-between mt-3">
                                 {/* First Name */}
                                 <div className="w-[50%] ">
@@ -164,13 +211,15 @@ function Contact() {
                             </div>
 
                             <div className="flex justify-center">
-                                <button className='border-2 border-[#05a2ff] hover:bg-[#0589d5] text-[16px] bg-[#05a2ff] p-3 px-10 rounded-lg text-white font-nunito font-bold cursor-pointer mt-5' >Submit</button>
+                                <button className='border-2 border-[#05a2ff] hover:bg-[#0589d5] text-[16px] bg-[#05a2ff] p-3 px-10 rounded-lg text-white font-nunito font-bold cursor-pointer mt-5'
+                                    // onClick={handlesubmit}
+                                    >Submit</button>
 
                             </div>
                         </div>
                     </div>
 
-                    <div className=" w-[35%] ">
+                    <div className=" w-[35%] hidden md:flex ">
                         <motion.img
                             src={Contactimage}
                             alt="contact"
@@ -194,9 +243,9 @@ function Contact() {
                 <Faq />
             </div>
 
-             <div>
+            <div>
 
-                <Footer/>
+                <Footer />
             </div>
 
 

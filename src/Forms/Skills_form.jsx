@@ -108,7 +108,15 @@ function SkillsForm() {
               key={exp.id}
               className="border rounded-2xl p-4 bg-white transition-all duration-300 "
             >
-              <div className="flex justify-between items-start gap-4">
+              <div className="flex md:hidden  justify-end">
+                  <button
+                      onClick={() => handleDelete(exp.id)}
+                      className="  flex items-center gap-1 text-[#cad8e1] hover:text-[#ff0033]"
+                    >
+                      <FiTrash2 size={16} />
+                    </button>
+              </div>
+              <div className="flex flex-wrap justify-between items-start gap-4">
                 {/* Skill input */}
                 <div className="flex-1">
                   <label className="block text-[#374151] text-[16px] font-nunito font-normal mb-1">
@@ -130,7 +138,7 @@ function SkillsForm() {
                   <div className="text-[16px] font-nunito font-normal">
                     <span className="text-[#2e4067]"> Level — </span><span className="text-[#2da2ff]">{steps[exp.level]}</span>
                   </div>
-                  <div className="flex items-center mt-2">
+                  <div className="flex  items-center mt-2">
                     <div className={`relative w-[300px] h-10 transition ${isActive ? "" : "opacity-50 pointer-events-none"
                       }`}>
                       {/* Background line */}
@@ -165,7 +173,7 @@ function SkillsForm() {
                     </div>
                     <button
                       onClick={() => handleDelete(exp.id)}
-                      className="flex items-center gap-1 text-[#cad8e1] hover:text-[#ff0033]"
+                      className=" hidden md:flex items-center gap-1 text-[#cad8e1] hover:text-[#ff0033]"
                     >
                       <FiTrash2 size={16} />
                     </button>

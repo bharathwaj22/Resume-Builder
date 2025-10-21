@@ -47,8 +47,8 @@ export default function BetterCV() {
 }
     return (
         <section className="py-16 pt-10">
-            <div className="px-6 mt-10">
-                <h2 className="font-roboto font-semibold text-[40px] text-[#2e404a] text-center">Why use Aryu Resume Builder?</h2>
+            <div className=" px-3 md:px-6 mt-10">
+                <h2 className="font-roboto font-semibold text-[30px] md:text-[40px] text-[#2e404a] text-center">Why use Aryu Resume Builder?</h2>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-10">
                     {features.map((feature, idx) => (
                         <div key={idx} className=" flex gap-3  ">

@@ -22,10 +22,10 @@ function Choose_template() {
     const nagivate = useNavigate();
     const clickresumedetails = () => {
         nagivate('/Resume-details')
-          window.scrollTo({
-    top: 0,
-    behavior: "smooth",
-  });
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+        });
     }
 
     const steps = [
@@ -251,10 +251,10 @@ function Choose_template() {
 
     return (
         <section className='bg-white'>
-            <Header/>
+            <Header />
             <div className='flex justify-center p-4 px-10 items-center'>
                 {/* <div className='text-[#2e404a] text-[25px] font-nunito font-bold'>Aryu Resume</div> */}
-                <div className='flex justify-between mt-3'>
+                <div className='hidden md:flex  justify-between mt-3 '>
                     <div className="flex justify-center items-center ">
                         {steps.map((step, index) => {
                             const isCurrent = step.id === 1;
@@ -304,8 +304,8 @@ function Choose_template() {
 
             {/* resume template */}
 
-            <section className='px-20 pt-10 pb-20'>
-                <div className='font-roboto text-[52px] text-[#2e404a] font-bold text-center mt-3'>{allTaskDetails?.templateTitle}</div>
+            <section className='px-4 md:px-20 pt-10 pb-20'>
+                <div className='font-roboto text-[30px] md:text-[52px] text-[#2e404a] font-bold text-center mt-3'>{allTaskDetails?.templateTitle}</div>
                 <div className=' font-nunito text-[18px] text-[#2e404a] font-normal leading-[25.2px] text-center mt-3'>{allTaskDetails?.
                     templateDescription}</div>
 
@@ -315,7 +315,7 @@ function Choose_template() {
 
 
                     <div ref={containerRef} className="relative border-b border-gray-200">
-                        <div className="flex flex-wrap justify-between -mb-px">
+                        <div className="flex  justify-between overflow-scroll md:overflow-hidden -mb-px">
 
 
                             <div
@@ -428,7 +428,7 @@ function Choose_template() {
 
             </section>
 
-            <Footer/>
+            <Footer />
 
 
         </section>

@@ -189,7 +189,7 @@ export default function Education_form() {
 
               {/* Content */}
               <div
-                className={`transition-all duration-500  ${exp.isOpen ? "max-h-[500px] opacity-100 mt-4" : "max-h-0 opacity-0"
+                className={`transition-all duration-500  ${exp.isOpen ? " h-full md:max-h-[500px] opacity-100 mt-4" : "max-h-0 opacity-0"
                   }`}
               >
                 <div className="space-y-3">
@@ -264,7 +264,7 @@ export default function Education_form() {
                   </div>
 
                   {/* Location + Dates */}
-                  <div className="grid grid-cols-2 gap-3">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                     <div>
                       <label className="block text-[#374151] text-[16px] font-nunito font-normal mb-1">
                         Degree
