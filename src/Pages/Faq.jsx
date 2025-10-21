@@ -48,8 +48,8 @@ const faqs = [
 export default function Faq() {
     return (
         <div className="w-full p-6 bg-white flex justify-center">
-            <div className="w-[70%]">
-                <h2 className="font-roboto font-semibold text-[40px] text-[#2e404a] text-center pt-20">
+            <div className="w-[95%] md:w-[70%]">
+                <h2 className="font-roboto font-semibold text-[25px] md:text-[40px] text-[#2e404a] text-center pt-20">
                     FAQs 
                 </h2>
 
@@ -59,7 +59,7 @@ export default function Faq() {
                             {({ open }) => (
                                 <div className="border-b border-[#b2d9f1] pb-2">
                                     <Disclosure.Button
-                                        className={`flex w-full justify-between items-center py-6 text-left text-[22px] font-roboto text-[#2e404a] font-semibold focus:outline-none transition-colors`}
+                                        className={`flex w-full justify-between items-center py-6 text-left text-[18px] md:text-[22px] font-roboto text-[#2e404a] font-semibold focus:outline-none transition-colors`}
                                     >
                                         {faq.question}
 
@@ -81,7 +81,7 @@ export default function Faq() {
                                     >
                                         <Disclosure.Panel
                                             static
-                                            className="text-[#0a3370] font-nunito font-normal text-[18px] pb-4 pl-1 pr-2"
+                                            className="text-[#0a3370] font-nunito font-normal text-[14px] md:text-[18px] pb-4 pl-1 pr-2"
                                         >
                                             {faq.answer}
                                         </Disclosure.Panel>

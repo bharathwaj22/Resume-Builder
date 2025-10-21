@@ -8,7 +8,7 @@ import { Editor } from 'primereact/editor';
 
 export default function Experience_form() {
 
- const [experiences, setExperiences] = useState([
+  const [experiences, setExperiences] = useState([
     {
       id: Date.now(),
       jobTitle: "",
@@ -115,26 +115,26 @@ export default function Experience_form() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-// useEffect(() => {
-//   experiences.forEach((exp) => {
-//     const picker = pickerRefs.current[exp.id];
-//     const input = inputRefs.current[exp.id];
-//     if (picker && input && exp.showPicker) {
-//       const inputRect = input.getBoundingClientRect();
-//       const pickerHeight = picker.offsetHeight;
-//       const viewportHeight = window.innerHeight;
+  // useEffect(() => {
+  //   experiences.forEach((exp) => {
+  //     const picker = pickerRefs.current[exp.id];
+  //     const input = inputRefs.current[exp.id];
+  //     if (picker && input && exp.showPicker) {
+  //       const inputRect = input.getBoundingClientRect();
+  //       const pickerHeight = picker.offsetHeight;
+  //       const viewportHeight = window.innerHeight;
 
-//       // If not enough space below, open upward
-//       if (inputRect.bottom + pickerHeight + 8 > viewportHeight) {
-//         picker.style.top = "auto";
-//         picker.style.bottom = `${inputRect.height + 8}px`;
-//       } else {
-//         picker.style.bottom = "auto";
-//         picker.style.top = `${inputRect.height + 8}px`;
-//       }
-//     }
-//   });
-// }, [experiences]);
+  //       // If not enough space below, open upward
+  //       if (inputRect.bottom + pickerHeight + 8 > viewportHeight) {
+  //         picker.style.top = "auto";
+  //         picker.style.bottom = `${inputRect.height + 8}px`;
+  //       } else {
+  //         picker.style.bottom = "auto";
+  //         picker.style.top = `${inputRect.height + 8}px`;
+  //       }
+  //     }
+  //   });
+  // }, [experiences]);
 
   return (
 
@@ -186,7 +186,7 @@ export default function Experience_form() {
 
               {/* Content */}
               <div
-                className={`transition-all duration-500  ${exp.isOpen ? "max-h-[500px] opacity-100 mt-4" : "max-h-0 opacity-0"
+                className={`transition-all duration-500  ${exp.isOpen ? " h-full md:max-h-[500px] opacity-100 mt-4" : "max-h-0 opacity-0"
                   }`}
               >
                 <div className="space-y-3">
@@ -261,7 +261,7 @@ export default function Experience_form() {
                   </div>
 
                   {/* Location + Dates */}
-                  <div className="grid grid-cols-2 gap-3">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                     <div>
                       <label className="block text-[#374151] text-[16px] font-nunito font-normal mb-1">
                         Location
@@ -320,76 +320,76 @@ export default function Experience_form() {
                         />
                       </div> */}
 
-                       <div className="relative inline-block">
-                    <label className="block text-[#374151] text-[16px] font-nunito font-normal mb-1">
-                      End Date
-                    </label>
-                    <input
-                      type="text"
-                      readOnly
-                      ref={(el) => (inputRefs.current[exp.id] = el)}
-                      value={exp.endDate}
-                      onClick={() => togglePicker(exp.id)}
-                      placeholder="MM/YYYY"
+                      <div className="relative inline-block">
+                        <label className="block text-[#374151] text-[16px] font-nunito font-normal mb-1">
+                          End Date
+                        </label>
+                        <input
+                          type="text"
+                          readOnly
+                          ref={(el) => (inputRefs.current[exp.id] = el)}
+                          value={exp.endDate}
+                          onClick={() => togglePicker(exp.id)}
+                          placeholder="MM/YYYY"
                           className="w-full p-3 border text-[#a8bdca] text-[16px] font-nunito font-normal rounded-lg bg-[#f7f9fc] shadow-sm focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-[#abdffc] focus:shadow-md transition-all duration-300"
-                    />
+                        />
 
-                    {/* Dropdown */}
-                    {exp.showPicker && (
-                      <div
-                        ref={(el) => (pickerRefs.current[exp.id] = el)}
-                        className="absolute right-10 -mt-24 w-60 bg-white shadow-xl rounded-lg p-4 z-[2147483647]"
-                      >
-                        {/* Year Header */}
-                        <div className="flex justify-between items-center mb-3">
-                          <button
-                            onClick={() =>
-                              handleChange(exp.id, "year", exp.year - 1)
-                            }
-                            className="px-2 text-gray-500 hover:text-black"
+                        {/* Dropdown */}
+                        {exp.showPicker && (
+                          <div
+                            ref={(el) => (pickerRefs.current[exp.id] = el)}
+                            className="absolute right-10 -mt-24 w-60 bg-white shadow-xl rounded-lg p-4 z-[2147483647]"
                           >
-                            &lt;
-                          </button>
-                          <span className="font-semibold">{exp.year}</span>
-                          <button
-                            onClick={() =>
-                              handleChange(exp.id, "year", exp.year + 1)
-                            }
-                            className="px-2 text-gray-500 hover:text-black"
-                          >
-                            &gt;
-                          </button>
-                        </div>
-
-                        {/* Month Grid */}
-                        <div className="grid grid-cols-3 gap-2 text-center">
-                          {months.map((month) => (
-                            <div
-                              key={month}
-                              onClick={() =>
-                                handleSelect(exp.id, `${month} ${exp.year}`)
-                              }
-                              className="p-2 rounded-md cursor-pointer hover:bg-blue-100 active:bg-blue-200 transition text-gray-700"
-                            >
-                              {month}
+                            {/* Year Header */}
+                            <div className="flex justify-between items-center mb-3">
+                              <button
+                                onClick={() =>
+                                  handleChange(exp.id, "year", exp.year - 1)
+                                }
+                                className="px-2 text-gray-500 hover:text-black"
+                              >
+                                &lt;
+                              </button>
+                              <span className="font-semibold">{exp.year}</span>
+                              <button
+                                onClick={() =>
+                                  handleChange(exp.id, "year", exp.year + 1)
+                                }
+                                className="px-2 text-gray-500 hover:text-black"
+                              >
+                                &gt;
+                              </button>
                             </div>
-                          ))}
-                        </div>
 
-                        {/* Currently work here */}
-                        <div className="mt-3 text-center border-t pt-2">
-                          <button
-                            onClick={() =>
-                              handleSelect(exp.id, "Currently work here")
-                            }
-                            className="text-blue-500 hover:underline text-sm"
-                          >
-                            Currently work here
-                          </button>
-                        </div>
+                            {/* Month Grid */}
+                            <div className="grid grid-cols-3 gap-2 text-center">
+                              {months.map((month) => (
+                                <div
+                                  key={month}
+                                  onClick={() =>
+                                    handleSelect(exp.id, `${month} ${exp.year}`)
+                                  }
+                                  className="p-2 rounded-md cursor-pointer hover:bg-blue-100 active:bg-blue-200 transition text-gray-700"
+                                >
+                                  {month}
+                                </div>
+                              ))}
+                            </div>
+
+                            {/* Currently work here */}
+                            <div className="mt-3 text-center border-t pt-2">
+                              <button
+                                onClick={() =>
+                                  handleSelect(exp.id, "Currently work here")
+                                }
+                                className="text-blue-500 hover:underline text-sm"
+                              >
+                                Currently work here
+                              </button>
+                            </div>
+                          </div>
+                        )}
                       </div>
-                    )}
-                  </div>
                     </div>
                   </div>
 

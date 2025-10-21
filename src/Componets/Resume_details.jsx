@@ -23,13 +23,13 @@ function Resume_details() {
     ];
 
     const tabWidths = {
-  contacts: 5,
-  experience: 25,
-  education: 43,
-  skills: 60,
-  summary: 77,
-  finalize: 99,
-};
+        contacts: 5,
+        experience: 25,
+        education: 43,
+        skills: 60,
+        summary: 77,
+        finalize: 99,
+    };
 
     const [activeTab, setActiveTab] = useState("contacts");
 
@@ -62,9 +62,9 @@ function Resume_details() {
         <div className='bg-[#eff2f9] h-full'>
             <Header />
 
-            <section className='flex mt-5 p-3 '>
+            <section className='flex flex-wrap md:flex-nowrap mt-5 p-3 '>
                 {/* left tab  */}
-                <div className='w-[50%] '>
+                <div className=' w-full md:w-[50%] '>
 
                     <div className='bg-white  rounded-lg p-1 '>
                         {/* <div className="relative w-full p-">
@@ -109,7 +109,7 @@ function Resume_details() {
 
                         <div className="relative w-full">
                             {/* Tabs + Dots container */}
-                            <div className="flex flex-wrap justify-between relative z-10">
+                            <div className="hidden md:flex  justify-between relative z-10">
                                 {tabsData.map((tab, index) => {
                                     const isActive = tab.id === activeTab;
                                     return (
@@ -149,11 +149,11 @@ function Resume_details() {
 
                             {/* Progress Line (animated) */}
                             <div
-  className="absolute left-[6px] bottom-[5px] h-0.5 bg-[#5da2ff] transition-all duration-500 ease-in-out"
-  style={{
-    width: `${tabWidths[activeTab] || 0}%`,
-  }}
-></div>
+                                className="absolute left-[6px] bottom-[5px] h-0.5 bg-[#5da2ff] transition-all duration-500 ease-in-out"
+                                style={{
+                                    width: `${tabWidths[activeTab] || 0}%`,
+                                }}
+                            ></div>
 
 
 
@@ -189,7 +189,7 @@ function Resume_details() {
                     </div>
                 </div>
                 {/* right resume */}
-                <div className="w-[50%] p-2 flex justify-center">
+                <div className="w-[50%] p-2 hidden md:flex justify-center">
                     <div className="overflow-hidden rounded-xl w-[70%] shadow-lg hover:shadow-2xl transition-shadow duration-300 flex justify-center">
                         <img
                             src={Image6}

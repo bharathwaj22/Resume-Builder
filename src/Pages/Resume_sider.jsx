@@ -62,10 +62,10 @@ function Resume_sider() {
   ];
 
   return (
-    <div className="bg-[#2d424d] h-[700px] text-white py-20">
+    <div className="bg-[#2d424d] h-[700px]  text-white py-20">
       {/* Header Section */}
       <div className="text-center px-4">
-        <h2 className="text-[45px] font-roboto font-bold leading-tight">
+        <h2 className=" text-[30px] md:text-[45px] font-roboto font-bold leading-tight">
           Choose your <span className="text-[#05a2ff]">favorite template and build</span>,
           your resume in minutes!
         </h2>
@@ -99,14 +99,14 @@ function Resume_sider() {
 
 
             >
-              <div className="rounded-xl shadow-lg overflow-hidden ">
+              <div className="rounded-xl shadow-lg overflow-hidden  ">
                 <img
                   src={t.img}
                   alt={t.name}
-                  className="w-full h-96 object-cover"
+                  className="w-full h-full md:h-96 object-cover"
                 />
               </div>
-              <div className="p-4 text-center text-[22px] font-roboto font-semibold text-[#2e404a]">
+              <div className="p-4  text-center text-[22px] font-roboto font-semibold text-[#2e404a]">
                 {t.name}
               </div>
             </div>
