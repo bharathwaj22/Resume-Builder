@@ -205,7 +205,7 @@ export default function Education_form() {
                           value={exp.jobTitle}
                           onChange={(e) => handleChange(exp.id, "jobTitle", e.target.value)}
                           onBlur={() => handleBlur(exp.id, "jobTitle")}
-                          placeholder="Enter your job title"
+                          placeholder="School name"
                           className="w-full p-3 pr-12 border text-[#a8bdca] text-[16px] font-nunito font-normal rounded-lg bg-[#f7f9fc] shadow-sm focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-[#abdffc] focus:shadow-md transition-all duration-300"
                         />
                         {exp.touched.jobTitle && exp.jobTitle.trim() !== "" && (
@@ -239,7 +239,7 @@ export default function Education_form() {
                           value={exp.employer}
                           onChange={(e) => handleChange(exp.id, "employer", e.target.value)}
                           onBlur={() => handleBlur(exp.id, "employer")}
-                          placeholder="Employer"
+                          placeholder="Location"
                           className="w-full p-3 border text-[#a8bdca] text-[16px] font-nunito font-normal rounded-lg bg-[#f7f9fc] shadow-sm focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-[#abdffc] focus:shadow-md transition-all duration-300"
                         />
                         {exp.touched.employer && exp.employer.trim() !== "" && (
@@ -275,7 +275,7 @@ export default function Education_form() {
                           value={exp.location}
                           onChange={(e) => handleChange(exp.id, "location", e.target.value)}
                           onBlur={() => handleBlur(exp.id, "location")}
-                          placeholder="Location"
+                          placeholder="Degree"
                           className="w-full p-3 border text-[#a8bdca] text-[16px] font-nunito font-normal rounded-lg bg-[#f7f9fc] shadow-sm focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-[#abdffc] focus:shadow-md transition-all duration-300"
                         />
                         {exp.touched.location && exp.location.trim() !== "" && (
