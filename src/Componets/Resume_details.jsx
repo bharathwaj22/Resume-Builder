@@ -9,10 +9,16 @@ import Skills_form from '../Forms/Skills_form';
 import Summary_form from '../Forms/Summary_form';
 import Finalize_form from '../Forms/Finalize_form';
 import Image6 from '../assets/images/resume6.svg.svg'
+import { useLocation } from 'react-router-dom';
 
 
 
 function Resume_details() {
+
+     const location = useLocation();
+    const templateId = location.state?.templateId;
+
+    console.log("Received Template ID:", templateId);
     const tabsData = [
         { id: "contacts", name: "Contacts" },
         { id: "experience", name: "Experience" },

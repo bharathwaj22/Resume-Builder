@@ -10,18 +10,29 @@ import Image6 from '../assets/images/resume6.svg.svg'
 import Image7 from '../assets/images/resume7.svg.svg'
 import Image8 from '../assets/images/resume8.svg.svg'
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 function Resume_sider() {
      const nagivate = useNavigate();
 
     const clickchoosetemplate = () => {
-        nagivate('/choose-template')
+        nagivate('/Resume-details')
 
         window.scrollTo({
             top: 0,
             behavior: "smooth",
         });
     }
+
+const [currentIndex, setCurrentIndex] = useState(0);
+
+
+
+  const clickChooseTemplate = () => {
+    const template = templates[currentIndex];
+    console.log("Selected Template ID:", template.id);
+  };
+
   const responsive = {
     superLargeDesktop: {
       breakpoint: { max: 4000, min: 3000 },
@@ -29,11 +40,11 @@ function Resume_sider() {
     },
     largeDesktop: {
       breakpoint: { max: 3000, min: 1440 },
-      items: 5,
+      items: 3,
     },
     desktop: {
       breakpoint: { max: 1440, min: 1024 },
-      items: 4,
+      items: 3,
     },
     smallDesktop: {
       breakpoint: { max: 1024, min: 900 },
@@ -62,7 +73,7 @@ function Resume_sider() {
   ];
 
   return (
-    <div className="bg-[#2d424d] h-[700px]  text-white py-20">
+    <div className="bg-[#2d424d] h-[600px] md:h-[750px]  text-white py-20">
       {/* Header Section */}
       <div className="text-center px-4">
         <h2 className=" text-[30px] md:text-[45px] font-roboto font-bold leading-tight">
@@ -78,7 +89,7 @@ function Resume_sider() {
       </div>
 
       {/* Carousel Section */}
-      <div className="mt-16 relative ">
+      <div className="mt-16 relative  ">
         <Carousel
           responsive={responsive}
           swipeable={true}
@@ -91,6 +102,12 @@ function Resume_sider() {
           arrows={true}
           containerClass="carousel-container"
           itemClass="px-3"
+                  centerMode={true}
+
+                afterChange={(previousSlide, { currentSlide }) => {
+          setCurrentIndex(currentSlide);
+        }}
+
         >
           {templates.map((t) => (
             <div
@@ -99,11 +116,11 @@ function Resume_sider() {
 
 
             >
-              <div className="rounded-xl shadow-lg overflow-hidden  ">
+              <div className="rounded-xl shadow-lg overflow-hidden h-full ">
                 <img
                   src={t.img}
                   alt={t.name}
-                  className="w-full h-full md:h-96 object-cover"
+                  className="w-full h-full  object-cover"
                 />
               </div>
               <div className="p-4  text-center text-[22px] font-roboto font-semibold text-[#2e404a]">
@@ -114,7 +131,7 @@ function Resume_sider() {
 
 
         </Carousel>
-        <div className='flex justify-center absolute w-full bottom-28'>
+        <div className='flex justify-center absolute w-full bottom-28 '>
           <button className="mt-5 px-6 py-3 bg-[#05a2ff] hover:bg-[#0589d5] text-white font-semibold rounded-lg  transition "  onClick={clickchoosetemplate}>
             Use This Template
           </button>

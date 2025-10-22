@@ -247,7 +247,7 @@ function Homepage() {
             <section>
                 <Resume_sider />
             </section>
-            <section className='bg-[linear-gradient(182deg,rgba(239,248,255,1)_28%,rgba(255,255,255,1)_100%)] mt-[40%] md:mt-0 '>
+            <section className='bg-[linear-gradient(182deg,rgba(239,248,255,1)_28%,rgba(255,255,255,1)_100%)]  md:mt-5 '>
                 <h2 className="font-roboto font-semibold text-[25px] md:text-[40px] text-[#2e404a] text-center pt-36">Landing Your Ideal Job Starts Here</h2>
 
 
