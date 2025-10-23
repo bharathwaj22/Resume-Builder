@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 // import { useState } from 'react'
 import { FaThLarge, FaList } from 'react-icons/fa';
 import { useState, useRef, useEffect } from 'react';
@@ -16,6 +16,8 @@ import { FaFolder, FaStar, FaPalette, FaFileAlt, FaUser, FaBriefcase } from "rea
 import { useNavigate } from 'react-router-dom';
 import Footer from '../Pages/Footer';
 import Header from '../Pages/Header';
+import { CreateContext } from '../App';
+
 
 
 function Choose_template() {
@@ -27,6 +29,11 @@ function Choose_template() {
             behavior: "smooth",
         });
     }
+
+    let UseContext=useContext(CreateContext)
+
+    console.log(UseContext);
+    
 
     const steps = [
         { id: 1, name: 'Choose template' },

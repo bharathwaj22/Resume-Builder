@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useContext } from "react";
 import { FiChevronDown, FiChevronUp, FiTrash2 } from "react-icons/fi";
 import { IoMdAdd } from "react-icons/io";
 
@@ -6,24 +6,28 @@ import { Editor } from 'primereact/editor';
 import { Calendar } from 'primereact/calendar';
 import "primereact/resources/themes/saga-blue/theme.css";
 import "primereact/resources/primereact.min.css";
+import { CreateContext } from "../App";
+
 
 
 export default function Education_form() {
 
-  const [experiences, setExperiences] = useState([
-    {
-      id: Date.now(),
-      jobTitle: "",
-      employer: "",
-      location: "",
-      startDate:null,
-      endDate: null,
-      isOpen: true,
-      touched: {},
-      showPicker: false,
-      year: new Date().getFullYear(),
-    },
-  ]);
+   let {experiences, setExperiences}=useContext(CreateContext)
+
+  // const [experiences, setExperiences] = useState([
+  //   {
+  //     id: Date.now(),
+  //     jobTitle: "",
+  //     employer: "",
+  //     location: "",
+  //     startDate:null,
+  //     endDate: null,
+  //     isOpen: true,
+  //     touched: {},
+  //     showPicker: false,
+  //     year: new Date().getFullYear(),
+  //   },
+  // ]);
 
   const pickerRefs = useRef({});
   const inputRefs = useRef({});

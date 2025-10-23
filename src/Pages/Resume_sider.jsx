@@ -13,8 +13,19 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 function Resume_sider() {
-     const nagivate = useNavigate();
+  const navigate = useNavigate();
+  const [currentIndex, setCurrentIndex] = useState(0);
 
+
+  const clickChooseTemplate = () => {
+    const selectedTemplate = templates[currentIndex];
+    if (selectedTemplate) {
+      navigate(`/Resume-details/${selectedTemplate.id}`, { state: selectedTemplate });
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
+
+ 
     const clickchoosetemplate = () => {
         nagivate('/Resume-details')
 
@@ -24,14 +35,32 @@ function Resume_sider() {
         });
     }
 
-const [currentIndex, setCurrentIndex] = useState(0);
+  // const clickChooseTemplate = () => {
+  //   const selectedTemplate = templates[currentIndex];
+  //   if (selectedTemplate) {
+  //     const encodedName = encodeURIComponent(selectedTemplate.name); // handle spaces safely
+  //     navigate(`/Resume-details/${selectedTemplate.id}/${encodedName}`);
+  //     window.scrollTo({ top: 0, behavior: "smooth" });
+  //   }
+  // };
 
 
 
-  const clickChooseTemplate = () => {
-    const template = templates[currentIndex];
-    console.log("Selected Template ID:", template.id);
-  };
+  // const clickChooseTemplate = (index) => {
+
+  //   console.log("aaaa")
+
+
+  //   const selectedTemplate = templates[currentIndex];
+  //   if (selectedTemplate) {
+  //     navigate(`/Resume-details/${selectedTemplate.id}`, {
+  //       state: selectedTemplate,
+  //     });
+  //     window.scrollTo({ top: 0, behavior: "smooth" });
+  //   }
+  // };
+
+
 
   const responsive = {
     superLargeDesktop: {
@@ -83,7 +112,7 @@ const [currentIndex, setCurrentIndex] = useState(0);
         <p className="mt-4 text-[16px] font-nunito max-w-3xl mx-auto">
           Build a professional, error-free, and ATS-friendly resume in minutes with our AI-powered generator. Explore 40+ modern templates.
         </p>
-        <button className="mt-8 bg-white text-[#05a2ff] font-semibold py-3 px-8 rounded-lg hover:bg-blue-100 shadow-lg transition duration-300" onClick={clickchoosetemplate}>
+        <button className="mt-8 bg-white text-[#05a2ff] font-semibold py-3 px-8 rounded-lg hover:bg-blue-100 shadow-lg transition duration-300"onClick={clickchoosetemplate} >
           View All Templates
         </button>
       </div>
@@ -102,27 +131,32 @@ const [currentIndex, setCurrentIndex] = useState(0);
           arrows={true}
           containerClass="carousel-container"
           itemClass="px-3"
-                  centerMode={true}
+          centerMode={true}
+          afterChange={(nextSlide) => {
+            const correctIndex = nextSlide % templates.length;
+            setCurrentIndex(correctIndex);
+          }}
 
-                afterChange={(previousSlide, { currentSlide }) => {
-          setCurrentIndex(currentSlide);
-        }}
 
         >
-          {templates.map((t) => (
+          {templates.map((t, index) => (
             <div
               key={t.id}
+              className={` ${index === currentIndex ? "scale-105" : ""
+                }`}
             //   className="bg-white rounded-xl shadow-lg overflow-hidden transform hover:scale-105 transition duration-300"
 
 
             >
               <div className="rounded-xl shadow-lg overflow-hidden h-full ">
+                <p>{index + 1}</p>
                 <img
                   src={t.img}
                   alt={t.name}
                   className="w-full h-full  object-cover"
                 />
               </div>
+
               <div className="p-4  text-center text-[22px] font-roboto font-semibold text-[#2e404a]">
                 {t.name}
               </div>
@@ -132,7 +166,7 @@ const [currentIndex, setCurrentIndex] = useState(0);
 
         </Carousel>
         <div className='flex justify-center absolute w-full bottom-28 '>
-          <button className="mt-5 px-6 py-3 bg-[#05a2ff] hover:bg-[#0589d5] text-white font-semibold rounded-lg  transition "  onClick={clickchoosetemplate}>
+          <button className="mt-5 px-6 py-3 bg-[#05a2ff] hover:bg-[#0589d5] text-white font-semibold rounded-lg  transition " onClick={clickchoosetemplate}>
             Use This Template
           </button>
         </div>
