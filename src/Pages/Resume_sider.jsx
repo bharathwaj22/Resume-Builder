@@ -27,7 +27,7 @@ function Resume_sider() {
 
  
     const clickchoosetemplate = () => {
-        nagivate('/Resume-details')
+        navigate('/Resume-details')
 
         window.scrollTo({
             top: 0,
