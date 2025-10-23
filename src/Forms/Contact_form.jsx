@@ -1,28 +1,44 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Dropdown } from "primereact/dropdown";
+import { CreateContext } from "../App";
 
 
 export default function ContactForm() {
-  const [firstName, setFirstName] = useState("");
+
+  let { firstName, setFirstName } = useContext(CreateContext)
+  let { lastName, setLastName } = useContext(CreateContext)
+  let { jobTitle, setJobTitle } = useContext(CreateContext)
+  let { phone, setPhone } = useContext(CreateContext)
+  let { email, setEmail } = useContext(CreateContext)
+  let { tags, setTags } = useContext(CreateContext)
+  let { tones, setTones } = useContext(CreateContext)
+
+
+  console.log("usecontect", firstName)
+  // const [firstName, setFirstName] = useState("");
   const [firstTouched, setFirstTouched] = useState(false);
 
-  const [lastName, setLastName] = useState("");
+  // const [lastName, setLastName] = useState("");
   const [lastTouched, setLastTouched] = useState(false);
 
-  const [jobTitle, setJobTitle] = useState(null);
+  // const [jobTitle, setJobTitle] = useState(null);
   const [jobTouched, setJobTouched] = useState(false);
 
-  const [phone, setPhone] = useState("");
+  // const [phone, setPhone] = useState("");
   const [phoneTouched, setPhoneTouched] = useState(false);
 
-  const [email, setEmail] = useState("");
+  // const [email, setEmail] = useState("");
   const [emailTouched, setEmailTouched] = useState(false);
 
   const [address, setAddress] = useState("");
-  const [city, setCity] = useState("");
-  const [state, setState] = useState("");
-  const [zip, setZip] = useState("");
+    const [addressTouched, setAddressTouched] = useState("");
 
+  const [city, setCity] = useState("");
+  const[cityTouched ,setCityTouched] =useState("");
+  const [country, setCountry] = useState("");
+  const [countryTouched,setCountryTouched]=useState(false);
+  const [postcode, setPostcode] = useState("");
+const [postTouched, setPostTouched] = useState("");
   const [showAdditional, setShowAdditional] = useState(false);
 
 
@@ -127,14 +143,16 @@ export default function ContactForm() {
 
 
   const jobTitles = Object.keys(jobData).map((key) => ({
-    label: jobData[key].title, // what will show in the dropdown
-    value: key                 // the internal value you store
+    label: jobData[key].title, 
+    value: jobData[key].title             
   }));
 
-  const [tags, setTags] = useState([]);
-  console.log("tags", tags)
+  const selectedJob = Object.values(jobData).find(
+  (job) => job.title === jobTitle
+);
 
-  const [tones, setTones] = useState([]);
+  // const [tags, setTags] = useState([]);
+  // const [tones, setTones] = useState([]);
 
 
   const removeTone = (tone) => {
@@ -331,7 +349,7 @@ export default function ContactForm() {
                 </div> */}
 
                 <div className="flex flex-wrap gap-2 mt-3">
-                  {jobData[jobTitle].keywords
+                  {selectedJob?.keywords
                     .filter((kw) => !tags.includes(kw)) // hide already selected keywords
                     .map((kw) => (
                       <button
@@ -399,7 +417,7 @@ export default function ContactForm() {
       </div> */}
                 {/* All Available Tones */}
                 <div className="flex flex-wrap gap-2 mt-3">
-                  {jobData[jobTitle].tones
+                  {selectedJob?.tones
                     .filter((tone) => !tones.includes(tone)) // hide selected tones
                     .map((tone) => (
                       <button
@@ -505,20 +523,20 @@ export default function ContactForm() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                 {/* Phone */}
                 <div>
-                  <label htmlFor="phone" className="block text-[#374151] text-[16px] font-nunito font-normal mb-1">
+                  <label htmlFor="Country" className="block text-[#374151] text-[16px] font-nunito font-normal mb-1">
                     Country
                   </label>
                   <div className="relative">
                     <input
                       type="tel"
-                      id="phone"
-                      value={phone}
-                      onChange={(e) => setPhone(e.target.value)}
-                      onBlur={() => setPhoneTouched(true)}
+                      id="Country"
+                      value={country}
+                      onChange={(e) => setCountry(e.target.value)}
+                      onBlur={() => setCountryTouched(true)}
                       placeholder="Country"
                       className="w-full p-3 pr-12 border text-[#a8bdca] text-[16px] font-nunito font-normal rounded-lg bg-[#f7f9fc] shadow-sm focus:outline-none  focus:border-blue-500    focus:ring-2 focus:ring-[#abdffc]  focus:shadow-md  transition-all duration-300"
                     />
-                    {isValid(phone, phoneTouched) && (
+                    {isValid(country, countryTouched) && (
                       <div className="absolute inset-y-0 right-2 flex items-center">
                         <div className="bg-green-500 rounded-full h-4 w-4 flex items-center justify-center">
                           <svg
@@ -540,20 +558,20 @@ export default function ContactForm() {
 
                 {/* Email */}
                 <div>
-                  <label htmlFor="email" className="block text-[#374151] text-[16px] font-nunito font-normal mb-1">
+                  <label htmlFor="City" className="block text-[#374151] text-[16px] font-nunito font-normal mb-1">
                     City
                   </label>
                   <div className="relative">
                     <input
-                      type="email"
-                      id="email"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      onBlur={() => setEmailTouched(true)}
+                      type="text"
+                      id="City"
+                      value={city}
+                      onChange={(e) => setCity(e.target.value)}
+                      onBlur={() => setCityTouched(true)}
                       placeholder="City"
                       className="w-full p-3 pr-12 border text-[#a8bdca] text-[16px] font-nunito font-normal rounded-lg bg-[#f7f9fc] shadow-sm focus:outline-none  focus:border-blue-500    focus:ring-2 focus:ring-[#abdffc]  focus:shadow-md  transition-all duration-300"
                     />
-                    {isValid(email, emailTouched) && (
+                    {isValid(city, cityTouched) && (
                       <div className="absolute inset-y-0 right-2 flex items-center">
                         <div className="bg-green-500 rounded-full h-4 w-4 flex items-center justify-center">
                           <svg
@@ -575,22 +593,22 @@ export default function ContactForm() {
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                {/* Phone */}
+                {/* addres */}
                 <div>
-                  <label htmlFor="phone" className="block text-[#374151] text-[16px] font-nunito font-normal mb-1">
+                  <label htmlFor="Address" className="block text-[#374151] text-[16px] font-nunito font-normal mb-1">
                     Address
                   </label>
                   <div className="relative">
                     <input
                       type="tel"
-                      id="phone"
-                      value={phone}
-                      onChange={(e) => setPhone(e.target.value)}
-                      onBlur={() => setPhoneTouched(true)}
+                      id="Address"
+                      value={address}
+                      onChange={(e) => setAddress(e.target.value)}
+                      onBlur={() => setAddressTouched(true)}
                       placeholder="Address"
                       className="w-full p-3 pr-12 border text-[#a8bdca] text-[16px] font-nunito font-normal rounded-lg bg-[#f7f9fc] shadow-sm focus:outline-none  focus:border-blue-500    focus:ring-2 focus:ring-[#abdffc]  focus:shadow-md  transition-all duration-300"
                     />
-                    {isValid(phone, phoneTouched) && (
+                    {isValid(address, addressTouched) && (
                       <div className="absolute inset-y-0 right-2 flex items-center">
                         <div className="bg-green-500 rounded-full h-4 w-4 flex items-center justify-center">
                           <svg
@@ -610,22 +628,22 @@ export default function ContactForm() {
                   </div>
                 </div>
 
-                {/* Email */}
+                {/* post */}
                 <div>
-                  <label htmlFor="email" className="block text-[#374151] text-[16px] font-nunito font-normal mb-1">
+                  <label htmlFor="Post" className="block text-[#374151] text-[16px] font-nunito font-normal mb-1">
                     Post code
                   </label>
                   <div className="relative">
                     <input
-                      type="email"
-                      id="email"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      onBlur={() => setEmailTouched(true)}
+                      type="text"
+                      id="Post"
+                      value={postcode}
+                      onChange={(e) => setPostcode(e.target.value)}
+                      onBlur={() => setPostTouched(true)}
                       placeholder="Post code"
                       className="w-full p-3 pr-12 border text-[#a8bdca] text-[16px] font-nunito font-normal rounded-lg bg-[#f7f9fc] shadow-sm focus:outline-none  focus:border-blue-500    focus:ring-2 focus:ring-[#abdffc]  focus:shadow-md  transition-all duration-300"
                     />
-                    {isValid(email, emailTouched) && (
+                    {isValid(postcode, postTouched) && (
                       <div className="absolute inset-y-0 right-2 flex items-center">
                         <div className="bg-green-500 rounded-full h-4 w-4 flex items-center justify-center">
                           <svg

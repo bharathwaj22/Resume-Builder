@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Header from '../Pages/Header'
 import { useState, useRef, useEffect } from 'react';
 import { FaFolder, FaStar, FaPalette, FaFileAlt, FaUser, FaBriefcase } from "react-icons/fa";
@@ -10,12 +10,19 @@ import Summary_form from '../Forms/Summary_form';
 import Finalize_form from '../Forms/Finalize_form';
 import Image6 from '../assets/images/resume6.svg.svg'
 import { useLocation } from 'react-router-dom';
+import { CreateContext } from '../App';
+import Resume1 from '../Templates/Resume1';
+
+
 
 
 
 function Resume_details() {
 
-     const location = useLocation();
+    // let UseContext = useContext(CreateContext)
+    // console.log("UseContextdd", UseContext)
+
+    const location = useLocation();
     const templateId = location.state?.templateId;
 
     console.log("Received Template ID:", templateId);
@@ -195,7 +202,7 @@ function Resume_details() {
                     </div>
                 </div>
                 {/* right resume */}
-                <div className="w-[50%] p-2 hidden md:flex justify-center">
+                {/* <div className="w-[50%] p-2 hidden md:flex justify-center">
                     <div className="overflow-hidden rounded-xl w-[70%] shadow-lg hover:shadow-2xl transition-shadow duration-300 flex justify-center">
                         <img
                             src={Image6}
@@ -203,7 +210,27 @@ function Resume_details() {
                             className="w-full h-auto object-cover"
                         />
                     </div>
-                </div>
+                </div> */}
+                <div className="hidden md:flex justify-center w-[50%] ">
+  <div className="w-[70%] overflow-visible    flex justify-center">
+ 
+   
+        <div
+          className="w-full h-full"
+          style={{
+            transform: "scale(0.8)", // scale down to fit
+            transformOrigin: "center top",
+            width: "210mm",
+            height: "297mm",
+          }}
+        >
+          <Resume1 />
+  
+    </div>
+  </div>
+</div>
+
+
 
 
             </section>
