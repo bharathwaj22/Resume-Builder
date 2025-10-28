@@ -53,8 +53,8 @@ function SkillsForm() {
 
 
   return (
-    <section className="relative">
-      <div className="p-4 bg-white h-[500px] overflow-y-auto scrollbar-thin scrollbar-thumb-blue-500 scrollbar-track-gray-200 scrollbar-thumb-rounded-md">
+    <section className="">
+      <div className=" relative p-4 bg-white h-[500px] overflow-y-auto scrollbar-thin scrollbar-thumb-blue-500 scrollbar-track-gray-200 scrollbar-thumb-rounded-md">
         <div className="flex justify-between">  <h1 className="text-[24px] font-roboto ffont-bold  text-[#2E404A]  mb-2">
           Skills
         </h1>
@@ -196,11 +196,7 @@ function SkillsForm() {
           </button>
         </div>
 
-
-
-      </div>
-
-      {skillTipsClicked && (
+  {skillTipsClicked && (
         <AnimatePresence>
           <div className=" z-50 flex items-start justify-end overflow-y-auto overflow-x-hidden  " onClick={() => setSkillTipsClicked(false)}>
             <div className="absolute inset-0 left-[30%]  flex items-center justify-center  bg-transparent  h-full">
@@ -302,6 +298,10 @@ function SkillsForm() {
           </div>
         </AnimatePresence>
       )}
+
+      </div>
+
+    
     </section>
   );
 }

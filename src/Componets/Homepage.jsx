@@ -90,7 +90,7 @@ function Homepage() {
 
 
 
-                        <div className="relative flex justify-center items-center  mt-5 h-full   w-[90%]">
+                        <div className="relative bg-slate-50 flex justify-center items-center  mt-5 h-full   w-[90%]">
 
                             <motion.div
                                 className="absolute bg-[#ffffffad] rounded-full w-[300px] md:w-[500px] h-[300px] md:h-[500px] z-0"

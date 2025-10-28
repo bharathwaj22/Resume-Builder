@@ -9,10 +9,19 @@ import "primereact/resources/primereact.min.css";
 import { CreateContext } from "../App";
 
 
+import { FiCheckCircle, FiXCircle } from "react-icons/fi";
+import { FaRegLightbulb } from "react-icons/fa";
+import { IoIosArrowDown } from "react-icons/io";
+import { FiX } from "react-icons/fi";
+
+
+import { motion, AnimatePresence } from "framer-motion";
+
+
 
 export default function Education_form() {
 
-   let {experiences, setExperiences}=useContext(CreateContext)
+  let { experiences, setExperiences } = useContext(CreateContext)
 
   // const [experiences, setExperiences] = useState([
   //   {
@@ -142,13 +151,41 @@ export default function Education_form() {
     });
   }, [experiences]);
 
-
+  const [skillTipsClicked, setSkillTipsClicked] = useState(false)
   return (
 
     <section>
-      <div className="p-4 bg-white h-[500px] overflow-y-auto scrollbar-thin scrollbar-thumb-blue-500 scrollbar-track-gray-200 scrollbar-thumb-rounded-md">
-        <h1 className="text-[24px] font-roboto font-semibold text-[#2e404a] mb-2">Education
+      <div className="p-4 relative bg-white h-[500px] overflow-y-auto scrollbar-thin scrollbar-thumb-blue-500 scrollbar-track-gray-200 scrollbar-thumb-rounded-md">
+
+        <div className="flex justify-between">  <h1 className="text-[24px] font-roboto ffont-bold  text-[#2E404A]  mb-2">
+          Education
         </h1>
+          <div className=" inline-block text-left">
+            <button
+              onClick={() => setSkillTipsClicked((prev) => !prev)}
+              className="flex items-center gap-2 bg-[#fff9eb] border border-[#eec66a]
+                   rounded-lg px-3 py-1 text-[16px] text-[#2E404A]font-nunito font-normal  transition-all"
+            >
+              {/* Bulb Icon */}
+              <motion.div
+                animate={{ opacity: [1, 0.4, 1] }}
+                transition={{ duration: 1, repeat: Infinity, ease: "easeInOut" }}
+              >
+                <FaRegLightbulb className="text-yellow-400 text-lg" />
+              </motion.div>
+              Education Tips
+
+              {/* Animated Arrow */}
+              <motion.div
+                animate={{ rotate: skillTipsClicked ? 180 : 0 }}
+                transition={{ duration: 0.3 }}
+                className="text-gray-600 text-lg"
+              >
+                <IoIosArrowDown />
+              </motion.div>
+            </button>
+
+          </div></div>
         <p className="text-[#3e5679] text-[16px] font-nunito font-normal mb-8">
           List your work experience starting with the most recent position first.
         </p>
@@ -166,7 +203,7 @@ export default function Education_form() {
               >
                 <div className="text-[#94a1ab] font-nunito font-normal text-[16px]">
                   <div>{exp.jobTitle || "School"}, {exp.employer || "Degree"}</div>
-                    {exp.startDate ? exp.startDate.getFullYear() : "MM/YYYY"} - {exp.endDate ? exp.endDate.getFullYear() : "MM/YYYY"}
+                  {exp.startDate ? exp.startDate.getFullYear() : "MM/YYYY"} - {exp.endDate ? exp.endDate.getFullYear() : "MM/YYYY"}
                 </div>
 
                 <div className="flex justify-end gap-4">
@@ -301,31 +338,31 @@ export default function Education_form() {
                         )}
                       </div>
                     </div>
-                     <div className="grid grid-cols-2 gap-2">
-                    <div>
-                      <label className="block text-[#374151] text-[16px] font-nunito font-normal mb-1">Start Year</label>
-                      <Calendar
-                        value={exp.startDate}
-                        onChange={(e) => handleChange(exp.id, "startDate", e.value)}
-                        view="year"
-                        dateFormat="yy"
-                        className="w-full p-3 border text-[#374151] text-[16px] font-nunito font-normal rounded-lg bg-[#f7f9fc] shadow-sm focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-[#abdffc] focus:shadow-md transition-all duration-300"
-                        placeholder="Select Year"
-                      />
-                    </div>
+                    <div className="grid grid-cols-2 gap-2">
+                      <div>
+                        <label className="block text-[#374151] text-[16px] font-nunito font-normal mb-1">Start Year</label>
+                        <Calendar
+                          value={exp.startDate}
+                          onChange={(e) => handleChange(exp.id, "startDate", e.value)}
+                          view="year"
+                          dateFormat="yy"
+                          className="w-full p-3 border text-[#374151] text-[16px] font-nunito font-normal rounded-lg bg-[#f7f9fc] shadow-sm focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-[#abdffc] focus:shadow-md transition-all duration-300"
+                          placeholder="Select Year"
+                        />
+                      </div>
 
-                    <div>
-                      <label className="block text-[#374151] text-[16px] font-nunito font-normal mb-1">End Year</label>
-                      <Calendar
-                        value={exp.endDate}
-                        onChange={(e) => handleChange(exp.id, "endDate", e.value)}
-                        view="year"
-                        dateFormat="yy"
-                        className="w-full p-3 border text-[#374151] text-[16px] font-nunito font-normal rounded-lg bg-[#f7f9fc] shadow-sm focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-[#abdffc] focus:shadow-md transition-all duration-300"
-                        placeholder="Select Year"
-                      />
+                      <div>
+                        <label className="block text-[#374151] text-[16px] font-nunito font-normal mb-1">End Year</label>
+                        <Calendar
+                          value={exp.endDate}
+                          onChange={(e) => handleChange(exp.id, "endDate", e.value)}
+                          view="year"
+                          dateFormat="yy"
+                          className="w-full p-3 border text-[#374151] text-[16px] font-nunito font-normal rounded-lg bg-[#f7f9fc] shadow-sm focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-[#abdffc] focus:shadow-md transition-all duration-300"
+                          placeholder="Select Year"
+                        />
+                      </div>
                     </div>
-                  </div>
                   </div>
 
                   {/* Description */}
@@ -355,6 +392,132 @@ export default function Education_form() {
             <IoMdAdd className="w-6 h-6" /> Add Education
           </button>
         </div>
+
+
+        {skillTipsClicked && (
+          <AnimatePresence>
+            <div className=" z-50 flex items-start justify-end overflow-y-auto overflow-x-hidden  " onClick={() => setSkillTipsClicked(false)}>
+              <div className="absolute inset-0 left-[30%]  flex items-center justify-center  bg-transparent  h-full top-20">
+                {/* Animated modal container */}
+                <motion.div
+                  initial={{ y: 70, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  exit={{ y: 70, opacity: 0 }}
+                  transition={{
+                    type: "spring",
+                    stiffness: 120,
+                    damping: 18,
+                    duration: 0.4
+                  }}
+                  className="w-screen py-3 lg:w-[30vw]  rounded-xl bg-white 
+           border-1 shadow-[0_0_25px_rgba(59,130,246,0.3)]"
+
+                >
+                  <div className="flex justify-between items-center  px-4">
+                    <div className=" w-full  font-nunito font-bold text-[14px] text-[#2E404A]">
+                      Education tips
+                    </div>
+                    <div
+                      onClick={() => setSkillTipsClicked(false)}
+                      className="text-gray-300 font-extrabold text-xl hover:text-gray-400 focus:outline-none w-8 h-8 flex items-center justify-center cursor-pointer"
+                    >
+                      <FiX />
+                    </div>
+                  </div>
+                  <hr />
+
+                  <p className="text-gray-700 text-sm leading-relaxed p-4">
+                    <div className="">
+                      {/* ✅ Positive tips */}
+                      <div className="flex items-start gap-2">
+                        <FiCheckCircle className="text-green-500 text-xl mt-1" />
+                        <div>
+                          <p className="font-nunito font-bold text-[14px] text-[#2E404A]">List your most recent education first</p>
+                          <p className="font-nunito font-normal text-[14px] text-[#2E404A]">Use reverse-chronological order.</p>
+                        </div>
+                      </div>
+
+                      <div className="flex items-start gap-2 mt-3">
+                        <FiCheckCircle className="text-green-500 text-xl mt-1" />
+                        <div>
+                          <p className="font-nunito font-bold text-[14px] text-[#2E404A]">Spell out acronyms</p>
+                          <p className="font-nunito font-normal text-[14px] text-[#2E404A]">
+                            Write “Bachelor of Science (B.S.)” to ensure clarity.
+                          </p>
+                        </div>
+                      </div>
+
+                      <div className="flex items-start gap-2 mt-3">
+                        <FiCheckCircle className="text-green-500 text-xl mt-1" />
+                        <div>
+                          <p className="font-nunito font-bold text-[14px] text-[#2E404A]">Include incomplete education if relevant</p>
+                          <p className="font-nunito font-normal text-[14px] text-[#2E404A]">
+                            It’s okay to list ongoing or unfinished degrees.                        </p>
+                        </div>
+                      </div>
+
+                      <div className="flex items-start gap-2 mt-3">
+                        <FiCheckCircle className="text-green-500 text-xl mt-1" />
+                        <div>
+                          <p className="font-nunito font-bold text-[14px] text-[#2E404A]">Show your impact</p>
+                          <p className="font-nunito font-normal text-[14px] text-[#2E404A]">
+                            Highlight your accomplishments, not generic duties.
+                          </p>
+                        </div>
+                      </div>
+
+
+                      <div className="flex items-start gap-2 mt-3">
+                        <FiCheckCircle className="text-green-500 text-xl mt-1" />
+                        <div>
+                          <p className="font-nunito font-bold text-[14px] text-[#2E404A]">Include GPA if it’s strong (usually 3.5 or higher)</p>
+                          <p className="font-nunito font-normal text-[14px] text-[#2E404A]">
+                            Only if requested or relevant to the role.
+
+                          </p>
+                        </div>
+                      </div>
+
+                      <hr className="my-2" />
+
+                      {/* ❌ Negative tips */}
+                      <div className="flex items-start gap-2 mt-3">
+                        <FiXCircle className="text-red-500 text-xl mt-1" />
+                        <div>
+                          <p className="font-nunito font-bold text-[14px] text-[#2E404A]">Don't abbreviate job titles</p>
+                          <p className="font-nunito font-normal text-[14px] text-[#2E404A]">
+                            Write the full job title so it’s easy to understand.                        </p>
+                        </div>
+                      </div>
+
+                      <div className="flex items-start gap-2 mt-3">
+                        <FiXCircle className="text-red-500 text-xl mt-1" />
+                        <div>
+                          <p className="font-nunito font-bold text-[14px] text-[#2E404A]">Don’t use “I” or full sentences</p>
+                          <p className="font-nunito font-normal text-[14px] text-[#2E404A]">
+                            Keep bullet points short, starting with action verbs.
+
+                          </p>
+                        </div>
+                      </div>
+
+                      <div className="flex items-start gap-2 mt-3">
+                        <FiXCircle className="text-red-500 text-xl mt-1" />
+                        <div>
+                          <p className="font-nunito font-bold text-[14px] text-[#2E404A]">Don’t exaggerate or lie
+                          </p>
+                          <p className="font-nunito font-normal text-[14px] text-[#2E404A]">
+                            False claims can backfire during interviews.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </p>
+                </motion.div>
+              </div>
+            </div>
+          </AnimatePresence>
+        )}
       </div>
 
 
