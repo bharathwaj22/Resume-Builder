@@ -20,46 +20,46 @@ export const CreateContext = createContext(); // Create context
 
 function App() {
   const [globalState, setGlobalState] = useState(0)
-    const [firstName, setFirstName] = useState("");
-    const [lastName, setLastName] = useState("");
-    
-      const [jobTitle, setJobTitle] = useState("");
-    
-      const [phone, setPhone] = useState("");
-    
-      const [email, setEmail] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
 
-        const [tags, setTags] = useState([]);
-        const [tones, setTones] = useState([]);
+  const [jobTitle, setJobTitle] = useState("");
 
-        const [address, setAddress] = useState("");
-        
-          const [city, setCity] = useState("");
-          const [country, setCountry] = useState("");
-          const [postcode, setPostcode] = useState("");
+  const [phone, setPhone] = useState("");
 
-     const [experiences, setExperiences] = useState([
-        {
-          id: Date.now(),
-          jobTitle: "",
-          employer: "",
-          location: "",
-          startDate:null,
-          endDate: null,
-          isOpen: true,
-          touched: {},
-          showPicker: false,
-          year: new Date().getFullYear(),
-        },
-      ]);
-  
+  const [email, setEmail] = useState("");
+
+  const [tags, setTags] = useState([]);
+  const [tones, setTones] = useState([]);
+
+  const [address, setAddress] = useState("");
+
+  const [city, setCity] = useState("");
+  const [country, setCountry] = useState("");
+  const [postcode, setPostcode] = useState("");
+
+  const [experiences, setExperiences] = useState([
+    {
+      id: Date.now(),
+      jobTitle: "",
+      employer: "",
+      location: "",
+      startDate: null,
+      endDate: null,
+      isOpen: true,
+      touched: {},
+      showPicker: false,
+      year: new Date().getFullYear(),
+    },
+  ]);
+
 
 
 
   return (
     <>
 
-      <CreateContext.Provider value={{ globalState, setGlobalState,firstName,setFirstName,lastName, setLastName,jobTitle, setJobTitle,phone, setPhone,email, setEmail,tags, setTags,tones, setTones,address, setAddress,city, setCity,country, setCountry,postcode, setPostcode,experiences, setExperiences }}>
+      <CreateContext.Provider value={{ globalState, setGlobalState, firstName, setFirstName, lastName, setLastName, jobTitle, setJobTitle, phone, setPhone, email, setEmail, tags, setTags, tones, setTones, address, setAddress, city, setCity, country, setCountry, postcode, setPostcode, experiences, setExperiences }}>
         <BrowserRouter>
           <Layout>
             <Routes>

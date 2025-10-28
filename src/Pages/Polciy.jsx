@@ -10,7 +10,7 @@ const Policy = () => {
             <div className="max-w-4xl mx-auto px-6 py-12">
                 {/* Page Title */}
                 <h1 className="text-5xl font-bold text-gray-900 mb-10 border-b pb-3">
-                    Resume builder privacy policy
+                    Privacy policy
                 </h1>
 
                 {/* Policy Sections */}

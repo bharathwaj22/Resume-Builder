@@ -17,12 +17,10 @@ const faqs = [
             "Yes! You can create a professional cover letter along with your resume. Our platform makes it easy to customize it to match your resume and highlight your strengths.",
     },
     {
-        question: "What makes Resume Builder the best resume tool?",
-        answer:
-            "Resume Builder stands out because it’s fast, easy to use, and packed with professional, customizable templates. It helps you create a polished, ATS-friendly resume that gets noticed by employers — all in just a few minutes.",
-    },
+        question: "What makes Resumint the best resume tool?",
+        answer:"Resumint is fast, easy to use, and packed with professional, customisable templates. It helps you create a polished, ATS-friendly resume that gets noticed—all in just a few minutes."    },
     {
-        question: "Is my data safe with Aryu resume builder?",
+        question: "Is my data safe with Resumint  resume builder?",
         answer:
             "Yes! Your data is completely safe with Aryu Resume Builder. We use secure systems to protect your personal information and never share it with third parties without your consent.",
     },

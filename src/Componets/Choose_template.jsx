@@ -22,15 +22,14 @@ import { CreateContext } from '../App';
 
 function Choose_template() {
     const navigate = useNavigate();
-    // const clickresumedetails = (template) => {
-    //     // nagivate('/Resume-details')
-    //         navigate("/Resume-details", { state: { templateId: template } });
+   const clickresumedetails = (templateId) => {
+  navigate("/Resume-details", { state: { templateId } });
 
-    //     window.scrollTo({
-    //         top: 0,
-    //         behavior: "smooth",
-    //     });
-    // }
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
+};
 
     let UseContext = useContext(CreateContext)
 
@@ -402,7 +401,9 @@ function Choose_template() {
                                         <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-20">
                                             <button
                                                 className="px-6 py-3 bg-[#05a2ff] hover:bg-[#0875b4] text-white font-semibold rounded-lg shadow-xl transition-all"
-                                                // onClick={clickresumedetails(template)}
+                                                // onClick={clickresumedetails(template.id)}
+                                                  onClick={() => clickresumedetails(template.id)}  // ✅ FIXED
+
                                             >
                                                 Use This Template
                                             </button>

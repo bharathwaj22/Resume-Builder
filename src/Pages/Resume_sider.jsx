@@ -14,16 +14,17 @@ import { useState } from "react";
 
 function Resume_sider() {
   const navigate = useNavigate();
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [activeTemplateId, setActiveTemplateId] = useState(1); 
+  console.log("activeTemplateId",activeTemplateId)
 
 
-  const clickChooseTemplate = () => {
-    const selectedTemplate = templates[currentIndex];
-    if (selectedTemplate) {
-      navigate(`/Resume-details/${selectedTemplate.id}`, { state: selectedTemplate });
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }
-  };
+  // const clickChooseTemplate = () => {
+  //   const selectedTemplate = templates[currentIndex];
+  //   if (selectedTemplate) {
+  //     navigate(`/Resume-details/${selectedTemplate.id}`, { state: selectedTemplate });
+  //     window.scrollTo({ top: 0, behavior: "smooth" });
+  //   }
+  // };
 
  
     const clickchoosetemplate = () => {
@@ -101,6 +102,17 @@ function Resume_sider() {
     { id: 8, img: Image8, name: "Elegant" },
   ];
 
+  const clickChooseTemplate = () => {
+    const selectedTemplate = templates.find((t) => t.id === activeTemplateId);
+    if (selectedTemplate) {
+      console.log("selectedTemplate",selectedTemplate)
+      navigate("/Resume-details", { state: { template: selectedTemplate } });
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
+
+
+
   return (
     <div className="bg-[#2d424d] h-[600px] md:h-[750px]  text-white py-20">
       {/* Header Section */}
@@ -120,36 +132,39 @@ function Resume_sider() {
       {/* Carousel Section */}
       <div className="mt-16 relative  ">
         <Carousel
-          responsive={responsive}
-          swipeable={true}
-          draggable={true}
+             responsive={responsive}
+          swipeable
+          draggable
           showDots={false}
-          infinite={true}
-          autoPlay={true}
+          infinite
+          autoPlay
           autoPlaySpeed={2000}
-          keyBoardControl={true}
-          arrows={true}
+          keyBoardControl
+          arrows
+          centerMode
           containerClass="carousel-container"
           itemClass="px-3"
-          centerMode={true}
           afterChange={(nextSlide) => {
-            const correctIndex = nextSlide % templates.length;
-            setCurrentIndex(correctIndex);
+            // ✅ Calculate center item index correctly
+            const itemsPerSlide = window.innerWidth < 600 ? 1 : window.innerWidth < 900 ? 2 : 3;
+            const centerIndex = (nextSlide + Math.floor(itemsPerSlide / 2)) % templates.length;
+            const currentTemplate = templates[centerIndex];
+            if (currentTemplate) {
+              setActiveTemplateId(currentTemplate.id);
+            }
           }}
 
-
         >
-          {templates.map((t, index) => (
+          {templates.map((t) => (
             <div
               key={t.id}
-              className={` ${index === currentIndex ? "scale-105" : ""
+              className={` ${ t.id === activeTemplateId ? "scale-105" : ""
                 }`}
-            //   className="bg-white rounded-xl shadow-lg overflow-hidden transform hover:scale-105 transition duration-300"
 
 
             >
               <div className="rounded-xl shadow-lg overflow-hidden h-full ">
-                <p>{index + 1}</p>
+                {/* <p>{t.id}</p> */}
                 <img
                   src={t.img}
                   alt={t.name}
@@ -160,16 +175,38 @@ function Resume_sider() {
               <div className="p-4  text-center text-[22px] font-roboto font-semibold text-[#2e404a]">
                 {t.name}
               </div>
+              {/* <div className='flex justify-center absolute w-full bottom-28 '>
+          <button className="mt-5 px-6 py-3 bg-[#05a2ff] hover:bg-[#0589d5] text-white font-semibold rounded-lg  transition " onClick={clickchoosetemplate}>
+            Use This Template
+          </button>
+        </div> */}
+ {/* {t.id === activeTemplateId && ( 
+  console.log("t.id === activeTemplateId ",t.id === activeTemplateId ),   
+    <div className="flex justify-center absolute w-full bottom-28">
+        <button
+          className="mt-5 px-6 py-3 bg-[#05a2ff] hover:bg-[#0589d5] text-white font-semibold rounded-lg transition"
+          onClick={() => clickchoosetemplate(t.id)}  
+        >
+          Use This Template
+        </button>
+      </div>
+    )} */}
             </div>
+            
           ))}
 
 
         </Carousel>
-        <div className='flex justify-center absolute w-full bottom-28 '>
-          <button className="mt-5 px-6 py-3 bg-[#05a2ff] hover:bg-[#0589d5] text-white font-semibold rounded-lg  transition " onClick={clickchoosetemplate}>
-            Use This Template
-          </button>
-        </div>
+
+         <div className="absolute left-0 right-0 bottom-16 flex justify-center">
+        <button
+          className="px-8 py-4 bg-[#05a2ff] hover:bg-[#0589d5] text-white text-lg font-semibold rounded-lg shadow-xl transition-transform hover:-translate-y-1"
+          onClick={clickChooseTemplate}
+        >
+          Use This Template
+        </button>
+      </div>
+        
       </div>
     </div>
   );
