@@ -12,11 +12,11 @@ export default function ContactForm() {
   const { email, setEmail } = useContext(CreateContext)
   const { tags, setTags } = useContext(CreateContext)
   const { tones, setTones } = useContext(CreateContext)
-  const {address, setAddress} = useContext(CreateContext);
+  const { address, setAddress } = useContext(CreateContext);
 
-  const {city, setCity} = useContext(CreateContext);
-  const {country, setCountry} = useContext(CreateContext);
-  const {postcode, setPostcode} = useContext(CreateContext);
+  const { city, setCity } = useContext(CreateContext);
+  const { country, setCountry } = useContext(CreateContext);
+  const { postcode, setPostcode } = useContext(CreateContext);
 
 
 
@@ -69,85 +69,326 @@ export default function ContactForm() {
   //   designer: ["Figma", "Photoshop", "UI/UX", "Illustrator", "Wireframe"],
   // };
 
-  const jobData = {
-    "technology": {
-      title: "Technology / Software Engineering / IT",
-      tones: ["Analytical", "Technical", "Detail-oriented"],
-      keywords: [
-        "Agile", "APIs", "CI/CD", "Cloud", "Debugging", "Automation",
-        "Git", "JavaScript", "Python", "React", "Node.js", "AWS", "DevOps"
-      ]
-    },
-    "marketing": {
-      title: "Marketing / Advertising / Content",
-      tones: ["Persuasive", "Creative", "Metrics-driven"],
-      keywords: [
-        "ROI", "Brand Awareness", "SEO", "Engagement", "Campaigns", "PPC",
-        "Analytics", "Copywriting", "Social Media"
-      ]
-    },
-    "finance": {
-      title: "Finance / Accounting / Banking",
-      tones: ["Precise", "Formal", "Data-driven"],
-      keywords: [
-        "Financial Analysis", "Forecasting", "Audit", "Compliance",
-        "GAAP", "Risk Management", "Variance", "Reconciliation"
-      ]
-    },
-    "healthcare": {
-      title: "Healthcare / Nursing / Medicine",
-      tones: ["Compassionate", "Professional", "Patient-focused"],
-      keywords: [
-        "Patient Care", "Clinical Procedures", "EMR", "Safety",
-        "Interdisciplinary Collaboration", "Documentation", "HIPAA"
-      ]
-    },
-    "education": {
-      title: "Education / Teaching / Academia",
-      tones: ["Supportive", "Structured", "Communicative"],
-      keywords: [
-        "Curriculum Design", "Lesson Planning", "Student Engagement",
-        "Differentiation", "Assessment", "SEN"
-      ]
-    },
-    "sales": {
-      title: "Sales / Retail / Customer Service",
-      tones: ["Energetic", "Results-oriented", "Personable"],
-      keywords: ["Targets", "Upselling", "CRM", "Customer Satisfaction", "Retention", "Negotiation"]
-    },
-    "engineering": {
-      title: "Engineering / Construction / Manufacturing",
-      tones: ["Technical", "Safety-conscious", "Results-driven"],
-      keywords: ["CAD", "Project Management", "Quality Control", "Safety", "Blueprint Reading", "ISO Standards"]
-    },
-    "law": {
-      title: "Law / Legal / Compliance",
-      tones: ["Formal", "Detail-oriented", "Precise"],
-      keywords: ["Case Management", "Litigation", "Research", "Drafting", "Compliance", "GDPR", "Corporate Law"]
-    },
-    "design": {
-      title: "Design / Arts / Media",
-      tones: ["Visual", "Creative", "Concise"],
-      keywords: ["UX/UI", "Branding", "Adobe Suite", "Typography", "Storytelling", "Wireframing"]
-    },
-    "data_science": {
-      title: "Data Science / Analytics",
-      tones: ["Analytical", "Quantitative", "Evidence-based"],
-      keywords: ["Machine Learning", "SQL", "Python", "Data Visualization", "Regression", "Tableau", "Power BI"]
-    },
-    "human_resources": {
-      title: "Human Resources / Recruitment",
-      tones: ["Empathetic", "Structured", "Strategic"],
-      keywords: ["Talent Acquisition", "Employee Relations", "HRIS", "Performance Management", "Onboarding"]
-    },
-    "administration": {
-      title: "Administration / Operations / Logistics",
-      tones: ["Organized", "Efficient", "Dependable"],
-      keywords: ["Scheduling", "Inventory", "Vendor Management", "Process Improvement", "MS Office", "Reporting"]
-    }
-  };
+  // const jobData = {
+  //   "technology": {
+  //     title: "Technology / Software Engineering / IT",
+  //     tones: ["Analytical", "Technical", "Detail-oriented"],
+  //     keywords: [
+  //       "Agile", "APIs", "CI/CD", "Cloud", "Debugging", "Automation",
+  //       "Git", "JavaScript", "Python", "React", "Node.js", "AWS", "DevOps"
+  //     ],
+  //     Focus: [
+  //       "Technical stack proficiency",
+  //       "Projects with measurable impact (speed, efficiency, uptime)",
+  //       "Collaboration in Agile/Scrum teams",
+  //       "GitHub / portfolio links",
+  //       "Security awareness and scalability experience"
+  //     ],
+
+  //     Structure_Additions: [
+  //       "Technical Skills section before Experience",
+  //       "Optional Key Projects section with GitHub links"
+  //     ],
+
+  //     Achievement_Bullets: [
+  //       "Developed a RESTful API in Node.js that reduced system latency by 40%.",
+  //       "Implemented CI/CD pipelines with Jenkins and Docker, improving deployment frequency by 50%."
+  //     ]
+
+  //   },
+  //   "marketing": {
+  //     title: "Marketing / Advertising / Content",
+  //     tones: ["Persuasive", "Creative", "Metrics-driven"],
+  //     keywords: [
+  //       "ROI", "Brand Awareness", "SEO", "Engagement", "Campaigns", "PPC",
+  //       "Analytics", "Copywriting", "Social Media"
+  //     ]
+  //   },
+  //   "finance": {
+  //     title: "Finance / Accounting / Banking",
+  //     tones: ["Precise", "Formal", "Data-driven"],
+  //     keywords: [
+  //       "Financial Analysis", "Forecasting", "Audit", "Compliance",
+  //       "GAAP", "Risk Management", "Variance", "Reconciliation"
+  //     ]
+  //   },
+  //   "healthcare": {
+  //     title: "Healthcare / Nursing / Medicine",
+  //     tones: ["Compassionate", "Professional", "Patient-focused"],
+  //     keywords: [
+  //       "Patient Care", "Clinical Procedures", "EMR", "Safety",
+  //       "Interdisciplinary Collaboration", "Documentation", "HIPAA"
+  //     ]
+  //   },
+  //   "education": {
+  //     title: "Education / Teaching / Academia",
+  //     tones: ["Supportive", "Structured", "Communicative"],
+  //     keywords: [
+  //       "Curriculum Design", "Lesson Planning", "Student Engagement",
+  //       "Differentiation", "Assessment", "SEN"
+  //     ]
+  //   },
+  //   "sales": {
+  //     title: "Sales / Retail / Customer Service",
+  //     tones: ["Energetic", "Results-oriented", "Personable"],
+  //     keywords: ["Targets", "Upselling", "CRM", "Customer Satisfaction", "Retention", "Negotiation"]
+  //   },
+  //   "engineering": {
+  //     title: "Engineering / Construction / Manufacturing",
+  //     tones: ["Technical", "Safety-conscious", "Results-driven"],
+  //     keywords: ["CAD", "Project Management", "Quality Control", "Safety", "Blueprint Reading", "ISO Standards"]
+  //   },
+  //   "law": {
+  //     title: "Law / Legal / Compliance",
+  //     tones: ["Formal", "Detail-oriented", "Precise"],
+  //     keywords: ["Case Management", "Litigation", "Research", "Drafting", "Compliance", "GDPR", "Corporate Law"]
+  //   },
+  //   "design": {
+  //     title: "Design / Arts / Media",
+  //     tones: ["Visual", "Creative", "Concise"],
+  //     keywords: ["UX/UI", "Branding", "Adobe Suite", "Typography", "Storytelling", "Wireframing"]
+  //   },
+  //   "data_science": {
+  //     title: "Data Science / Analytics",
+  //     tones: ["Analytical", "Quantitative", "Evidence-based"],
+  //     keywords: ["Machine Learning", "SQL", "Python", "Data Visualization", "Regression", "Tableau", "Power BI"]
+  //   },
+  //   "human_resources": {
+  //     title: "Human Resources / Recruitment",
+  //     tones: ["Empathetic", "Structured", "Strategic"],
+  //     keywords: ["Talent Acquisition", "Employee Relations", "HRIS", "Performance Management", "Onboarding"]
+  //   },
+  //   "administration": {
+  //     title: "Administration / Operations / Logistics",
+  //     tones: ["Organized", "Efficient", "Dependable"],
+  //     keywords: ["Scheduling", "Inventory", "Vendor Management", "Process Improvement", "MS Office", "Reporting"]
+  //   }
+  // };
+
+const jobData={
+  
+  technology: {
+    title: "Technology / Software Engineering / IT",
+    tones: ["Analytical", "Technical", "Detail-oriented"],
+    keywords: [
+      "Agile", "APIs", "CI/CD", "Cloud", "Debugging", "Automation",
+      "Git", "JavaScript", "Python", "React", "Node.js", "AWS", "DevOps"
+    ],
+    Focus: [
+      "Technical stack proficiency",
+      "Projects with measurable impact (speed, efficiency, uptime)",
+      "Collaboration in Agile/Scrum teams",
+      "GitHub / portfolio links",
+      "Security awareness and scalability experience"
+    ],
+    Structure_Additions: [
+      "Technical Skills section before Experience",
+      "Optional Key Projects section with GitHub links"
+    ],
+    Achievement_Bullets: [
+      "Developed a RESTful API in Node.js that reduced system latency by 40%.",
+      "Implemented CI/CD pipelines with Jenkins and Docker, improving deployment frequency by 50%."
+    ]
+  },
+
+  marketing: {
+    title: "Marketing / Advertising / Content",
+    tones: ["Persuasive", "Creative", "Metrics-driven"],
+    keywords: [
+      "ROI", "Brand Awareness", "SEO", "Engagement", "Campaigns", "PPC", "Analytics", "Copywriting", "Social Media"
+    ],
+    Focus: [
+      "Campaign results (engagement %, conversions, audience growth)",
+      "Creative storytelling balanced with data insight",
+      "Tools (Google Ads, Meta Ads, HubSpot, SEMrush, Canva, etc.)"
+    ],
+    Achievement_Bullets: [
+      "Increased organic traffic by 120% through SEO-optimized blog content.",
+      "Managed £30K annual ad budget with average 3.8x ROAS."
+    ]
+  },
+
+  finance: {
+    title: "Finance / Accounting / Banking",
+    tones: ["Precise", "Formal", "Data-driven"],
+    keywords: [
+      "Financial Analysis", "Forecasting", "Audit", "Compliance", "GAAP", "Risk Management", "Variance", "Reconciliation"
+    ],
+    Focus: [
+      "Quantitative achievements (savings, growth, efficiency)",
+      "Compliance and accuracy",
+      "Use of ERP or financial systems (SAP, QuickBooks, Oracle)"
+    ],
+    Achievement_Bullets: [
+      "Managed financial forecasting for £5M budget with <1% variance.",
+      "Streamlined month-end closing process, reducing reporting time by 30%."
+    ]
+  },
+
+  healthcare: {
+    title: "Healthcare / Nursing / Medicine",
+    tones: ["Compassionate", "Professional", "Patient-focused"],
+    keywords: [
+      "Patient Care", "Clinical Procedures", "EMR", "Safety", "Interdisciplinary Collaboration", "Documentation", "HIPAA"
+    ],
+    Focus: [
+      "Patient outcomes",
+      "Certifications and licenses",
+      "Workload (patients/day), collaboration with other departments",
+      "Use of healthcare tech systems (e.g., EMR/EHR)"
+    ],
+    Achievement_Bullets: [
+      "Delivered daily care to 15+ patients with a 98% patient satisfaction rate.",
+      "Assisted in implementing a new EMR system improving data retrieval time by 45%."
+    ]
+  },
+
+  education: {
+    title: "Education / Teaching / Academia",
+    tones: ["Supportive", "Structured", "Communicative"],
+    keywords: [
+      "Curriculum Design", "Lesson Planning", "Student Engagement", "Differentiation", "Assessment", "SEN"
+    ],
+    Focus: [
+      "Measurable student progress",
+      "Lesson innovation",
+      "Classroom management",
+      "Use of educational tools (Google Classroom, Canvas)"
+    ],
+    Achievement_Bullets: [
+      "Improved average class test scores by 18% through interactive learning methods.",
+      "Designed digital curriculum adopted by 3 departments."
+    ]
+  },
+
+  sales: {
+    title: "Sales / Retail / Customer Service",
+    tones: ["Energetic", "Results-oriented", "Personable"],
+    keywords: [
+      "Targets", "Upselling", "CRM", "Customer Satisfaction", "Retention", "Negotiation"
+    ],
+    Focus: [
+      "Sales figures or KPIs",
+      "Customer retention or satisfaction rates",
+      "Interpersonal skills and problem-solving",
+      "Awards or recognition"
+    ],
+    Achievement_Bullets: [
+      "Exceeded quarterly sales targets by 30%.",
+      "Maintained 95% customer satisfaction rating across 300+ clients."
+    ]
+  },
+
+  engineering: {
+    title: "Engineering / Construction / Manufacturing",
+    tones: ["Technical", "Safety-conscious", "Results-driven"],
+    keywords: [
+      "CAD", "Project Management", "Quality Control", "Safety", "Blueprint Reading", "ISO Standards"
+    ],
+    Focus: [
+      "Projects delivered (on-time, under budget)",
+      "Technical design or machinery proficiency",
+      "Safety compliance",
+      "Collaboration with cross-functional teams"
+    ],
+    Achievement_Bullets: [
+      "Supervised £2M construction project completed 3 weeks ahead of schedule.",
+      "Reduced machine downtime by 25% through preventive maintenance plan."
+    ]
+  },
+
+  law: {
+    title: "Law / Legal / Compliance",
+    tones: ["Formal", "Detail-oriented", "Precise"],
+    keywords: [
+      "Case Management", "Litigation", "Research", "Drafting", "Compliance", "GDPR", "Corporate Law"
+    ],
+    Focus: [
+      "Case outcomes",
+      "Legal research and documentation skills",
+      "Confidentiality and precision",
+      "Regulatory experience"
+    ],
+    Achievement_Bullets: [
+      "Drafted 50+ legal documents with 100% compliance accuracy.",
+      "Supported litigation team in achieving 85% success rate in civil cases."
+    ]
+  },
+
+  design: {
+    title: "Design / Arts / Media",
+    tones: ["Visual", "Creative", "Concise"],
+    keywords: [
+      "UX/UI", "Branding", "Adobe Suite", "Typography", "Storytelling", "Wireframing"
+    ],
+    Focus: [
+      "Portfolio links",
+      "Design impact on engagement or conversions",
+      "Collaboration with developers or marketing teams",
+      "Aesthetic consistency"
+    ],
+    Achievement_Bullets: [
+      "Designed landing pages that improved user retention by 32%.",
+      "Rebranded company identity leading to 20% increase in client inquiries."
+    ]
+  },
+
+  data: {
+    title: "Data Science / Analytics",
+    tones: ["Analytical", "Quantitative", "Evidence-based"],
+    keywords: [
+      "Machine Learning", "SQL", "Python", "Data Visualization", "Regression", "Tableau", "Power BI"
+    ],
+    Focus: [
+      "Datasets and models used",
+      "Business insights derived",
+      "Predictive analysis results",
+      "Tools and frameworks"
+    ],
+    Achievement_Bullets: [
+      "Built ML model predicting churn with 92% accuracy.",
+      "Automated reporting dashboards saving 15 hours weekly."
+    ]
+  },
+
+  hr: {
+    title: "Human Resources / Recruitment",
+    tones: ["Empathetic", "Structured", "Strategic"],
+    keywords: [
+      "Talent Acquisition", "Employee Relations", "HRIS", "Performance Management", "Onboarding"
+    ],
+    Focus: [
+      "Employee satisfaction and retention metrics",
+      "Hiring volume or efficiency",
+      "HR policy implementation",
+      "Training programs or diversity initiatives"
+    ],
+    Achievement_Bullets: [
+      "Reduced employee turnover by 18% through engagement initiatives.",
+      "Streamlined recruitment pipeline, cutting hiring time from 45 to 28 days."
+    ]
+  },
+
+  operations: {
+    title: "Administration / Operations / Logistics",
+    tones: ["Organized", "Efficient", "Dependable"],
+    keywords: [
+      "Scheduling", "Inventory", "Vendor Management", "Process Improvement", "MS Office", "Reporting"
+    ],
+    Focus: [
+      "Operational efficiency",
+      "Communication and coordination",
+      "Cost savings or time improvements",
+      "System or process optimization"
+    ],
+    Achievement_Bullets: [
+      "Coordinated logistics for 300+ deliveries weekly, maintaining 98% on-time rate.",
+      "Implemented digital filing system reducing retrieval time by 40%."
+    ]
+  }
 
 
+}
   const jobTitles = Object.keys(jobData).map((key) => ({
     label: jobData[key].title,
     value: jobData[key].title
@@ -443,6 +684,49 @@ export default function ContactForm() {
 
 
 
+          {/* focus */}
+
+         {selectedJob && (
+  <div className="bg-[#f9fbff] border mb-3 border-[#dce7f3] rounded-lg p-5 shadow-sm transition-all duration-300 space-y-5">
+
+    {/* Focus */}
+    {selectedJob?.Focus?.length > 0 && (
+      <section>
+        <h3 className="text-[#1c2c3f] font-semibold text-lg mb-2">Focus Areas:</h3>
+        <ul className="list-disc pl-5 space-y-1 text-[#4a5b6a] text-[15px] font-nunito">
+          {selectedJob.Focus.map((point, index) => (
+            <li key={index}>{point}</li>
+          ))}
+        </ul>
+      </section>
+    )}
+
+    {/* Structure Additions */}
+    {selectedJob?.Structure_Additions?.length > 0 && (
+      <section>
+        <h3 className="text-[#1c2c3f] font-semibold text-lg mb-2">Structure Additions:</h3>
+        <ul className="list-disc pl-5 space-y-1 text-[#4a5b6a] text-[15px] font-nunito">
+          {selectedJob.Structure_Additions.map((point, index) => (
+            <li key={index}>{point}</li>
+          ))}
+        </ul>
+      </section>
+    )}
+
+    {/* Achievement Bullets */}
+    {selectedJob?.Achievement_Bullets?.length > 0 && (
+      <section>
+        <h3 className="text-[#1c2c3f] font-semibold text-lg mb-2">Example Achievements:</h3>
+        <ul className="list-disc pl-5 space-y-1 text-[#4a5b6a] text-[15px] font-nunito">
+          {selectedJob.Achievement_Bullets.map((point, index) => (
+            <li key={index}>{point}</li>
+          ))}
+        </ul>
+      </section>
+    )}
+
+  </div>
+)}
 
 
 

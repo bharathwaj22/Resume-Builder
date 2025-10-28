@@ -18,7 +18,7 @@ const TermsPage = () => {
                     {/* Monthly Leave & CL Allowance */}
                     <section>
                         <div className="text-[16px] font-semibold mb-3">
-                            Welcome to our Resume Builder! By using this platform, you agree to these Terms and Conditions, which follow the laws of India. These rules cover how you can use our tools, templates, and features to create, edit, and download your resumes.
+                            Welcome to our Resumint Builder! By using this platform, you agree to these Terms and Conditions, which follow the laws of India. These rules cover how you can use our tools, templates, and features to create, edit, and download your resumes.
                         </div>
 
                         <div className="text-[16px] font-semibold mb-3">
@@ -51,7 +51,7 @@ const TermsPage = () => {
                     <section>
                         <h2 className="text-2xl font-semibold mb-3">Subscription & Payment Terms</h2>
                         <ul className="list-disc list-inside space-y-2">
-                            <li>Our Resume Builder may offer subscription plans to access premium features. Some plans might include a free trial. Make sure to check the details before signing up.</li>
+                            <li>Our Resumint Builder may offer subscription plans to access premium features. Some plans might include a free trial. Make sure to check the details before signing up.</li>
                             <li>Subscriptions automatically renew at the end of each billing period unless you cancel before the renewal date. You can cancel anytime through your account settings.</li>
 
                             <li>Payments are charged according to the plan you choose, and all billing is handled securely. Refunds are generally not provided after a payment is processed, except where required by law or in special cases.</li>
@@ -62,7 +62,7 @@ const TermsPage = () => {
                     <section>
                         <h2 className="text-2xl font-semibold mb-3">Use of the Service</h2>
                         <ul className="list-disc list-inside space-y-2">
-                            <li>You can use our Resume Builder to create resumes for personal or professional purposes. Please don’t use it for anything illegal or unauthorized.</li>
+                            <li>You can use our Resumint Builder to create resumes for personal or professional purposes. Please don’t use it for anything illegal or unauthorized.</li>
                             <li>All templates, designs, and content on the platform are protected. You are not allowed to copy, sell, share, or redistribute them without permission.</li>
                             <li>By using the service responsibly, you help keep the platform safe and useful for everyone.</li>
                         </ul>
@@ -75,7 +75,7 @@ const TermsPage = () => {
                     <section>
                         <h2 className="text-2xl font-semibold mb-3">User Content & Intellectual Property</h2>
                         <ul className="list-disc list-inside space-y-2">
-                            <li>The resumes and documents you create using our Resume Builder belong to you. You own the rights to the content you generate.</li>
+                            <li>The resumes and documents you create using our Resumint Builder belong to you. You own the rights to the content you generate.</li>
                             <li>By using our platform, you give us permission to store, process, and display your content as needed to provide the service. We respect your privacy and won’t use your personal information for other purposes without your consent.</li>
                             <li>
 
@@ -87,7 +87,7 @@ const TermsPage = () => {
                     <section>
                         <h2 className="text-2xl font-semibold mb-3">Privacy & Data Collection</h2>
                         <ul className="list-disc list-inside space-y-2">
-                            <li>We collect some information when you use our Resume Builder, such as your name, email, and any content you create. This information is stored securely and used only to provide and improve our services</li>
+                            <li>We collect some information when you use our Resumint Builder, such as your name, email, and any content you create. This information is stored securely and used only to provide and improve our services</li>
                             <li>We respect your privacy and follow applicable Indian data protection laws. For more details on how we handle your information and your rights, please read our Privacy Policy.</li>
 
                         </ul>
@@ -96,7 +96,7 @@ const TermsPage = () => {
                     <section>
                         <h2 className="text-2xl font-semibold mb-3">Disclaimers & Limitations of Liability</h2>
                         <ul className="list-disc list-inside space-y-2">
-                            <li>We work hard to make sure our Resume Builder works well, but we cannot guarantee that every resume will be error-free or perfectly formatted. We are not responsible for any loss of data, or for how your resume is used by employers.</li>
+                            <li>We work hard to make sure our Resumint Builder works well, but we cannot guarantee that every resume will be error-free or perfectly formatted. We are not responsible for any loss of data, or for how your resume is used by employers.</li>
                             <li>Using our service does not guarantee that you will get a job or specific results. The resumes you create are your responsibility, and any outcomes from using them are beyond our control.</li>
 
                         </ul>

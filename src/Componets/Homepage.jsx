@@ -55,7 +55,7 @@ function Homepage() {
                         <div className='flex gap-2 items-center'><div className='w-2 h-2 bg-green-500 rounded-full animate-pulse duration-[10ms] '></div><div><span className='text-[#2e404a] text-[16px] font-nunito font-bold'>52,551</span> <span className='text-[#44555f] text-[16px] font-nunito font-normal'>Best online resume builder templates</span></div></div>
 
                         <h1 className='font-roboto text-[30px] md:text-[60px] text-[#2e404a] font-bold  w-full md:w-[80%] md:leading-[67.6px] mt-3'>  Build Your <span class="text-[#05A2FF]">Perfect Resume</span> in Minutes</h1>
-                        <div className=' font-nunito text-[16px] md:text-[18px] text-[#2e404a] font-normal md:leading-[25.2px] mt-6'>Easily create a standout resume fast with templates you can customize to fit your style.</div>
+                        <div className=' font-nunito text-[16px] md:text-[18px] text-[#2e404a] font-normal md:leading-[25.2px] mt-6'>Easily create a standout resume fast with templates you can customise to fit your style.</div>
 
                         <button className='  border-2 border-[#05a2ff] hover:bg-[#0589d5] text-[16px] bg-[#05a2ff] p-3 px-5 rounded-lg text-white font-nunito font-bold cursor-pointer mt-10' onClick={clickchoosetemplate}>Create New Resume</button>
 
@@ -90,7 +90,7 @@ function Homepage() {
 
 
 
-                        <div className="relative bg-slate-50 flex justify-center items-center  mt-5 h-full   w-[90%]">
+                        <div className="relative  flex justify-center items-center  mt-5 h-full   w-[90%]">
 
                             <motion.div
                                 className="absolute bg-[#ffffffad] rounded-full w-[300px] md:w-[500px] h-[300px] md:h-[500px] z-0"

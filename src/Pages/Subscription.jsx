@@ -22,7 +22,7 @@ const Subscription = () => {
                     <section>
                         <h2 className="text-2xl font-semibold mb-3">Subscription Plans</h2>
                         <ul className="list-disc list-inside space-y-2">
-                            <div>Our Resume Builder offers several subscription plans that give you access to premium features, templates, and tools. Make sure to review the details of each plan carefully before subscribing.</div>
+                            <div>Our Resumint  Builder offers several subscription plans that give you access to premium features, templates, and tools. Make sure to review the details of each plan carefully before subscribing.</div>
                         </ul>
                     </section>
 
