@@ -72,53 +72,15 @@ function Resume_details() {
     const prevTab = tabsData[currentIndex - 1];
 
     return (
-        <div className='bg-[#eff2f9] h-full'>
+        <div className='bg-[#eff2f9] h-full md:h-screen md:overflow-hidden'>
             <Header />
 
-            <section className='flex flex-wrap md:flex-nowrap mt-5 p-3 '>
+            <section className='flex flex-wrap md:flex-nowrap md:h-screen md:overflow-hidden  p-3 '>
                 {/* left tab  */}
-                <div className=' w-full md:w-[50%] '>
+                <div className=' w-full md:w-[50%]  md:h-screen md:overflow-hidden'>
 
                     <div className='bg-white  rounded-lg p-1 '>
-                        {/* <div className="relative w-full p-">
-                            <div className="flex flex-wrap justify-between relative z-10">
-                                {tabsData.map((tab) => {
-                                    const isActive = tab.id === activeTab;
-                                    return (
-                                        <div key={tab.id} className="flex flex-col items-center">
-                                            <button
-                                                onClick={() => {
-                                                    setActiveTab(tab.id);
-                                                    setAllTaskDetails(tab);
-                                                }}
-                                                className={`
-                  p-2 text-[16px] font-nunito font bg-white
-                  transition-colors duration-200 ease-in-out
-                  ${isActive ? "text-[#5da2ff]" : "text-[#8d9ea8] hover:text-[#5da2ff]"}
-                `}
-                                            >
-                                                {tab.name}
-                                            </button>
 
-                                            <div
-                                                className={`
-                  w-3 h-3 rounded-full border-2 mt-1 z-10
-                  ${isActive
-                                                        ? "border-[#5da2ff] bg-white shadow-[0_0_0_4px_#a3d9ff]"
-                                                        : "border-[#5da2ff] bg-white"
-                                                    }
-                  transition-all duration-300 ease-in-out
-                `}
-                                            ></div>
-                                        </div>
-                                    );
-                                })}
-                            </div>
-
-                            <div className="absolute left-0 right-0 bottom-[5px] h-0.5 bg-[#5da2ff]"></div>
-
-
-                        </div> */}
 
                         <div className="relative w-full">
                             {/* Tabs + Dots container */}
@@ -173,7 +135,7 @@ function Resume_details() {
                         </div>
 
 
-                        <div className="mt-5">
+                        <div className="mt-2">
                             {renderTabContent()}
 
 
@@ -181,7 +143,7 @@ function Resume_details() {
                     </div>
                     {/* perivous */}
 
-                    <div className="bg-white p-4 mt-3 text-right rounded-lg flex justify-between  ">
+                    <div className="bg-white p-4 mt-1 text-right rounded-lg flex justify-between  ">
                         {prevTab && (
                             <button
                                 className="bg-white text-[#374151] border border-gray-300 px-6 py-2 rounded-lg mr-3 font-nunito font-semibold hover:bg-gray-100 transition-colors duration-300"
@@ -202,33 +164,31 @@ function Resume_details() {
                     </div>
                 </div>
                 {/* right resume */}
-                {/* <div className="w-[50%] p-2 hidden md:flex justify-center">
-                    <div className="overflow-hidden rounded-xl w-[70%] shadow-lg hover:shadow-2xl transition-shadow duration-300 flex justify-center">
-                        <img
-                            src={Image6}
-                            alt="image6"
-                            className="w-full h-auto object-cover"
-                        />
+
+                <div className="hidden md:flex w-1/2 h-screen justify-center items-start p-4 overflow-y-auto">
+                    <div
+                        className="flex justify-center items-start w-full"
+                        style={{
+                            paddingTop: "1rem", // optional spacing from top
+                        }}
+                    >
+                        <div
+                            className="w-full"
+                            style={{
+                                transform: "scale(0.8)",          
+                                transformOrigin: "top center",     
+                                width: "210mm",                    
+                                height: "297mm",                   
+                                boxShadow: "0 0 10px rgba(0,0,0,0.1)",
+                                background: "white",
+                                borderRadius: "8px",
+                            }}
+                        >
+                            <Resume1 />
+                        </div>
                     </div>
-                </div> */}
-                <div className="hidden md:flex justify-center w-[50%] ">
-  <div className="w-[70%] overflow-visible    flex justify-center">
- 
-   
-        <div
-          className="w-full h-full"
-          style={{
-            transform: "scale(0.8)", // scale down to fit
-            transformOrigin: "center top",
-            width: "210mm",
-            height: "297mm",
-          }}
-        >
-          <Resume1 />
-  
-    </div>
-  </div>
-</div>
+                </div>
+
 
 
 
