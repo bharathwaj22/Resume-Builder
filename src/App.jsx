@@ -32,6 +32,12 @@ function App() {
         const [tags, setTags] = useState([]);
         const [tones, setTones] = useState([]);
 
+        const [address, setAddress] = useState("");
+        
+          const [city, setCity] = useState("");
+          const [country, setCountry] = useState("");
+          const [postcode, setPostcode] = useState("");
+
      const [experiences, setExperiences] = useState([
         {
           id: Date.now(),
@@ -53,7 +59,7 @@ function App() {
   return (
     <>
 
-      <CreateContext.Provider value={{ globalState, setGlobalState,firstName,setFirstName,lastName, setLastName,jobTitle, setJobTitle,phone, setPhone,email, setEmail,tags, setTags,tones, setTones,experiences, setExperiences }}>
+      <CreateContext.Provider value={{ globalState, setGlobalState,firstName,setFirstName,lastName, setLastName,jobTitle, setJobTitle,phone, setPhone,email, setEmail,tags, setTags,tones, setTones,address, setAddress,city, setCity,country, setCountry,postcode, setPostcode,experiences, setExperiences }}>
         <BrowserRouter>
           <Layout>
             <Routes>

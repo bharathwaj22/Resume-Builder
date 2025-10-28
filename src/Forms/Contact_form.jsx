@@ -5,13 +5,19 @@ import { CreateContext } from "../App";
 
 export default function ContactForm() {
 
-  let { firstName, setFirstName } = useContext(CreateContext)
-  let { lastName, setLastName } = useContext(CreateContext)
-  let { jobTitle, setJobTitle } = useContext(CreateContext)
-  let { phone, setPhone } = useContext(CreateContext)
-  let { email, setEmail } = useContext(CreateContext)
-  let { tags, setTags } = useContext(CreateContext)
-  let { tones, setTones } = useContext(CreateContext)
+  const { firstName, setFirstName } = useContext(CreateContext)
+  const { lastName, setLastName } = useContext(CreateContext)
+  const { jobTitle, setJobTitle } = useContext(CreateContext)
+  const { phone, setPhone } = useContext(CreateContext)
+  const { email, setEmail } = useContext(CreateContext)
+  const { tags, setTags } = useContext(CreateContext)
+  const { tones, setTones } = useContext(CreateContext)
+  const {address, setAddress} = useContext(CreateContext);
+
+  const {city, setCity} = useContext(CreateContext);
+  const {country, setCountry} = useContext(CreateContext);
+  const {postcode, setPostcode} = useContext(CreateContext);
+
 
 
   console.log("usecontect", firstName)
@@ -30,15 +36,15 @@ export default function ContactForm() {
   // const [email, setEmail] = useState("");
   const [emailTouched, setEmailTouched] = useState(false);
 
-  const [address, setAddress] = useState("");
-    const [addressTouched, setAddressTouched] = useState("");
+  // const [address, setAddress] = useState("");
+  const [addressTouched, setAddressTouched] = useState("");
 
-  const [city, setCity] = useState("");
-  const[cityTouched ,setCityTouched] =useState("");
-  const [country, setCountry] = useState("");
-  const [countryTouched,setCountryTouched]=useState(false);
-  const [postcode, setPostcode] = useState("");
-const [postTouched, setPostTouched] = useState("");
+  // const [city, setCity] = useState("");
+  const [cityTouched, setCityTouched] = useState("");
+  // const [country, setCountry] = useState("");
+  const [countryTouched, setCountryTouched] = useState(false);
+  // const [postcode, setPostcode] = useState("");
+  const [postTouched, setPostTouched] = useState("");
   const [showAdditional, setShowAdditional] = useState(false);
 
 
@@ -143,13 +149,13 @@ const [postTouched, setPostTouched] = useState("");
 
 
   const jobTitles = Object.keys(jobData).map((key) => ({
-    label: jobData[key].title, 
-    value: jobData[key].title             
+    label: jobData[key].title,
+    value: jobData[key].title
   }));
 
   const selectedJob = Object.values(jobData).find(
-  (job) => job.title === jobTitle
-);
+    (job) => job.title === jobTitle
+  );
 
   // const [tags, setTags] = useState([]);
   // const [tones, setTones] = useState([]);
