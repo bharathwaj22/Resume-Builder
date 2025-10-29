@@ -14,7 +14,8 @@ function Resume1() {
       // height: "297mm",
       padding: "5mm",
       boxSizing: "border-box",
-    }}>   {/* HEADER */}
+    }}> 
+      {/* HEADER */}
       <div className="bg-yellow-400 flex items-center justify-between p-4 rounded-md  px-10">
         <div className="flex items-center">
 

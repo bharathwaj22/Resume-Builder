@@ -267,8 +267,7 @@ function Contact() {
 
                                 </div>
                             </div>
-                            <div className="flex gap-10 justify-between mt-3">
-                                {/* LinkedIn */}
+                            {/* <div className="flex gap-10 justify-between mt-3">
                                 <div className="w-[50%] mt-5">
                                     <label htmlFor="linkedin" className="block text-[#374151] text-[18px] font-nunito font-bold mb-1">
                                         LinkedIn
@@ -306,7 +305,6 @@ function Contact() {
                                     </div>
                                 </div>
 
-                                {/* Portfolio / Personal Site */}
                                 <div className="w-[50%] mt-5">
                                     <label htmlFor="portfolio" className="block text-[#374151] text-[18px] font-nunito font-bold mb-1">
                                         Portfolio / Personal Site
@@ -344,10 +342,9 @@ function Contact() {
                                         )}
                                     </div>
                                 </div>
-                            </div>
+                            </div> */}
 
                             <div className=" mt-5">
-                                {/* First Name */}
                                 <div>
                                     <label htmlFor="firstName" className="block text-[#374151] text-[18px] font-nunito font-bold mb-1">
                                         Message
