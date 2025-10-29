@@ -143,12 +143,8 @@ function Resume1() {
           SUMMARY
         </h2>
         <p className="text-gray-700 text-sm leading-relaxed">
-          Hardworking Student seeking employment. Ready to utilize my skills
-          and passion to further the mission of a company. Technologically
-          adept, offering experience with many different social media
-          platforms, office technology programs, and advanced computer skills.
-          Bringing forth a positive attitude and the willingness and
-          motivation to learn new programs.
+          <div dangerouslySetInnerHTML={{ __html: UseContext?.text || "Results-driven professional with over 5 years of experience in delivering high-quality work across diverse business environments. Skilled in managing multiple priorities, optimizing workflows, and driving team success through collaboration and strategic problem-solving. Known for excellent communication, adaptability, and attention to detail." }} />
+
         </p>
       </section>
 
@@ -158,25 +154,34 @@ function Resume1() {
           EXPERIENCE
         </h2>
         <div>
-          <h3 className="font-semibold text-gray-900">
-            Sales Associate, Big Apple Bookstore, New York
-          </h3>
-          <p className="text-gray-600 text-sm italic">Sep 2015 — Jun 2018</p>
-          <ul className="list-disc ml-6 mt-2 text-sm text-gray-700 space-y-1">
-            <li>Greeted customers and assisted them with finding books.</li>
-            <li>
-              Offered literary suggestions based on the needs and desires of
-              the customer.
-            </li>
-            <li>
-              Followed directions from my Supervisor and managed projects with
-              precision.
-            </li>
-            <li>
-              Organized books and adhered to the policies and mission of the
-              bookstore.
-            </li>
-          </ul>
+          {UseContext?.experiences
+            && UseContext?.experiences
+              .length > 0 ? (
+            UseContext?.experiences
+              .map((exp) => (
+                <div key={exp.id} className="border-b pb-4">
+                  <h3 className="font-semibold text-gray-900 text-lg">
+                    {exp.jobTitle || "Job Title"}{" "}
+                    <span className="text-gray-500 font-normal">
+                      — {exp.employer || "Employer"}
+                    </span>
+                    <span className="text-gray-500 font-normal">
+                      — {exp.location || "Location"}
+                    </span>
+                  </h3>
+
+                  <p className="text-gray-600 text-sm italic mt-1">
+                    {exp.startDate || "Start Date"} — {exp.endDate || "End Date"}
+                  </p>
+
+                  <div className="list-disc ml-6 mt-2 text-sm text-gray-700 space-y-1">
+                    <div dangerouslySetInnerHTML={{ __html: exp.text || "Responsibility" }} />
+                  </div>
+                </div>
+              ))
+          ) : (
+            <p className="text-gray-500 italic">No experience added yet.</p>
+          )}
         </div>
       </section>
 
@@ -185,21 +190,37 @@ function Resume1() {
         <h2 className="text-lg font-semibold text-white border-b pb-1 mb-2 bg-black w-fit p-2 rounded-md">
           EDUCATION
         </h2>
-        <div className="mb-3">
-          <h3 className="font-semibold text-gray-900">
-            Bachelor, Communications, New York University, New York
-          </h3>
-          <p className="text-gray-600 text-sm italic">2016 — Current</p>
-          <p className="text-gray-700 text-sm">
-            Working towards a Communications Degree.
-          </p>
-        </div>
         <div>
-          <h3 className="font-semibold text-gray-900">
-            High School Diploma, Regis High School, New York
-          </h3>
-          <p className="text-gray-600 text-sm italic">2012 — 2016</p>
-          <p className="text-gray-700 text-sm">Graduated with High Honors.</p>
+          {UseContext?.education
+
+            && UseContext?.education
+              .length > 0 ? (
+            UseContext?.education
+              .map((exp) => (
+                <div key={exp.id} className="border-b pb-4">
+                  <h3 className="font-semibold text-gray-900 text-lg">
+                    {exp.
+                      schoolname || "School Name"}
+                    <span className="text-gray-500 font-normal">
+                      — {exp.degree || "Degree"}
+                    </span>
+                    <span className="text-gray-500 font-normal">
+                      — {exp.location || "Location"}
+                    </span>
+                  </h3>
+
+                  <p className="text-gray-600 text-sm italic mt-1">
+                    {exp.startDate || "Start Date"} — {exp.endDate || "End Date"}
+                  </p>
+
+                  <div className="list-disc ml-6 mt-2 text-sm text-gray-700 space-y-1">
+                    <div dangerouslySetInnerHTML={{ __html: exp.text || "Responsibility" }} />
+                  </div>
+                </div>
+              ))
+          ) : (
+            <p className="text-gray-500 italic">No experience added yet.</p>
+          )}
         </div>
       </section>
 
@@ -208,12 +229,55 @@ function Resume1() {
         <h2 className="text-lg font-semibold text-white border-b pb-1 mb-2 bg-black w-fit p-2 rounded-md">
           SKILLS
         </h2>
-        <ul className="list-disc ml-6 text-sm text-gray-700 space-y-1">
-          <li>Advanced Communication Skills</li>
-          <li>Motivated Attitude</li>
-          <li>Office Technology Skills</li>
-          <li>Social Media Platforms</li>
-        </ul>
+        {/* <div className="grid grid-cols-2 gap-x-8 gap-y-3">
+          {UseContext?.skills.map((skill, index) => (
+            <div key={index}>
+              <p className="text-sm text-gray-800 mb-1">{skill.skill || "Skill"}</p>
+              {skill.level !== null && (
+                <div className="h-[4px] w-full bg-gray-300 rounded-full overflow-hidden">
+                  <div
+                    className="h-full bg-[#0c0c1e]"
+                    style={{
+                      width: `${(skill.level / 4) * 100}%`, // 0–4 = 5 levels total
+                    }}
+                  ></div>
+                </div>
+              )}
+
+            </div>
+          ))}
+        </div> */}
+
+        {UseContext?.skills?.some(skill => skill.level !== null) ? (
+  // ✅ Grid view when at least one skill has a level
+  <div className="grid grid-cols-2 gap-x-8 gap-y-3">
+    {UseContext.skills.map((skill, index) => (
+      <div key={index}>
+        <p className="text-sm text-gray-800 mb-1">
+          {skill.skill || "Skill"}
+        </p>
+        {skill.level !== null && (
+          <div className="h-[4px] w-full bg-gray-300 rounded-full overflow-hidden">
+            <div
+              className="h-full bg-[#0c0c1e]"
+              style={{
+                width: `${(skill.level / 4) * 100}%`, // 0–4 = 5 levels
+              }}
+            ></div>
+          </div>
+        )}
+      </div>
+    ))}
+  </div>
+) : (
+  // ✅ Bullet-point list when all levels are null
+  <ul className="list-disc pl-6 space-y-1 text-sm text-gray-800">
+    {UseContext.skills.map((skill, index) => (
+      <li key={index}>{skill.skill || "Skill"}</li>
+    ))}
+  </ul>
+)}
+
       </section>
     </div>
 

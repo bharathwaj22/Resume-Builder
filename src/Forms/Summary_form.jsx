@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useContext } from "react";
 import { FiChevronDown, FiChevronUp, FiTrash2 } from "react-icons/fi";
 import { IoMdAdd } from "react-icons/io";
 
@@ -6,12 +6,14 @@ import { Editor } from 'primereact/editor';
 import { Calendar } from 'primereact/calendar';
 import "primereact/resources/themes/saga-blue/theme.css";
 import "primereact/resources/primereact.min.css";
+import { CreateContext } from "../App";
 
 
 export default function Summary_form() {
-  const [text, setText] = useState("");
+  // const [text, setText] = useState("");
 
 
+  const { text, setText } = useContext(CreateContext);
 
   return (
 

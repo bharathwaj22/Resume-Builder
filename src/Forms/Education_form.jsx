@@ -21,12 +21,12 @@ import { motion, AnimatePresence } from "framer-motion";
 
 export default function Education_form() {
 
-  let { experiences, setExperiences } = useContext(CreateContext)
+  const { education, setEducation } = useContext(CreateContext)
 
-  // const [experiences, setExperiences] = useState([
+  // const [experiences, setEducation] = useState([
   //   {
   //     id: Date.now(),
-  //     jobTitle: "",
+  //     schoolname: "",
   //     employer: "",
   //     location: "",
   //     startDate:null,
@@ -46,14 +46,15 @@ export default function Education_form() {
     "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
   ];
 
-  const addExperience = () => {
-    setExperiences([
-      ...experiences,
+  const addEducation = () => {
+    setEducation([
+      ...education,
       {
         id: Date.now(),
-        jobTitle: "",
-        employer: "",
+        schoolname: "",
+        degree: "",
         location: "",
+        text: "",
         startDate: null,
         endDate: null,
         isOpen: true,
@@ -65,7 +66,7 @@ export default function Education_form() {
   };
 
   const toggleForm = (id) => {
-    setExperiences((prev) =>
+    setEducation((prev) =>
       prev.map((exp) =>
         exp.id === id ? { ...exp, isOpen: !exp.isOpen } : exp
       )
@@ -73,13 +74,13 @@ export default function Education_form() {
   };
 
   const handleChange = (id, field, value) => {
-    setExperiences((prev) =>
+    setEducation((prev) =>
       prev.map((exp) => (exp.id === id ? { ...exp, [field]: value } : exp))
     );
   };
 
   const handleBlur = (id, field) => {
-    setExperiences((prev) =>
+    setEducation((prev) =>
       prev.map((exp) =>
         exp.id === id
           ? { ...exp, touched: { ...exp.touched, [field]: true } }
@@ -89,67 +90,67 @@ export default function Education_form() {
   };
 
   const deleteExperience = (id) => {
-    setExperiences(experiences.filter((exp) => exp.id !== id));
+    setEducation(education.filter((exp) => exp.id !== id));
   };
 
-  const handleSelect = (id, value) => {
-    setExperiences((prev) =>
-      prev.map((exp) =>
-        exp.id === id
-          ? { ...exp, endDate: value, showPicker: false }
-          : exp
-      )
-    );
-  };
+  // const handleSelect = (id, value) => {
+  //   setEducation((prev) =>
+  //     prev.map((exp) =>
+  //       exp.id === id
+  //         ? { ...exp, endDate: value, showPicker: false }
+  //         : exp
+  //     )
+  //   );
+  // };
 
-  const togglePicker = (id) => {
-    setExperiences((prev) =>
-      prev.map((exp) =>
-        exp.id === id ? { ...exp, showPicker: !exp.showPicker } : exp
-      )
-    );
-  };
+  // const togglePicker = (id) => {
+  //   setEducation((prev) =>
+  //     prev.map((exp) =>
+  //       exp.id === id ? { ...exp, showPicker: !exp.showPicker } : exp
+  //     )
+  //   );
+  // };
 
   // Close dropdown when clicking outside
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      setExperiences((prev) =>
-        prev.map((exp) => {
-          const picker = pickerRefs.current[exp.id];
-          const input = inputRefs.current[exp.id];
-          if (picker && input &&
-            !picker.contains(event.target) &&
-            !input.contains(event.target)) {
-            return { ...exp, showPicker: false };
-          }
-          return exp;
-        })
-      );
-    };
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
+  // useEffect(() => {
+  //   const handleClickOutside = (event) => {
+  //     setEducation((prev) =>
+  //       prev.map((exp) => {
+  //         const picker = pickerRefs.current[exp.id];
+  //         const input = inputRefs.current[exp.id];
+  //         if (picker && input &&
+  //           !picker.contains(event.target) &&
+  //           !input.contains(event.target)) {
+  //           return { ...exp, showPicker: false };
+  //         }
+  //         return exp;
+  //       })
+  //     );
+  //   };
+  //   document.addEventListener("mousedown", handleClickOutside);
+  //   return () => document.removeEventListener("mousedown", handleClickOutside);
+  // }, []);
 
-  useEffect(() => {
-    experiences.forEach((exp) => {
-      const picker = pickerRefs.current[exp.id];
-      const input = inputRefs.current[exp.id];
-      if (picker && input && exp.showPicker) {
-        const inputRect = input.getBoundingClientRect();
-        const pickerHeight = picker.offsetHeight;
-        const viewportHeight = window.innerHeight;
+  // useEffect(() => {
+  //   education?.forEach((exp) => {
+  //     const picker = pickerRefs.current[exp.id];
+  //     const input = inputRefs.current[exp.id];
+  //     if (picker && input && exp.showPicker) {
+  //       const inputRect = input.getBoundingClientRect();
+  //       const pickerHeight = picker.offsetHeight;
+  //       const viewportHeight = window.innerHeight;
 
-        // If not enough space below, open upward
-        if (inputRect.bottom + pickerHeight + 8 > viewportHeight) {
-          picker.style.top = "auto";
-          picker.style.bottom = `${inputRect.height + 8}px`;
-        } else {
-          picker.style.bottom = "auto";
-          picker.style.top = `${inputRect.height + 8}px`;
-        }
-      }
-    });
-  }, [experiences]);
+  //       // If not enough space below, open upward
+  //       if (inputRect.bottom + pickerHeight + 8 > viewportHeight) {
+  //         picker.style.top = "auto";
+  //         picker.style.bottom = `${inputRect.height + 8}px`;
+  //       } else {
+  //         picker.style.bottom = "auto";
+  //         picker.style.top = `${inputRect.height + 8}px`;
+  //       }
+  //     }
+  //   });
+  // }, [education]);
 
   const [skillTipsClicked, setSkillTipsClicked] = useState(false)
   return (
@@ -191,7 +192,7 @@ export default function Education_form() {
         </p>
 
         <div className="space-y-4 pb-10">
-          {experiences.map((exp) => (
+          {education?.map((exp) => (
             <div
               key={exp.id}
               className="border rounded-2xl p-4 bg-white overflow-hidden transition-all duration-300"
@@ -202,8 +203,19 @@ export default function Education_form() {
                 className="flex justify-between items-center cursor-pointer group p-2 rounded-md b"
               >
                 <div className="text-[#94a1ab] font-nunito font-normal text-[16px]">
-                  <div>{exp.jobTitle || "School"}, {exp.employer || "Degree"}</div>
-                  {exp.startDate ? exp.startDate.getFullYear() : "MM/YYYY"} - {exp.endDate ? exp.endDate.getFullYear() : "MM/YYYY"}
+                  <div>{exp.schoolname || "School"}, {exp.degree || "Degree"}</div>
+                  {/* {exp.startDate ? exp.startDate.getFullYear() : "MM/YYYY"} - {exp.endDate ? exp.endDate.getFullYear() : "MM/YYYY"} */}
+                  {exp.startDate
+                    ? (exp.startDate instanceof Date
+                      ? exp.startDate.getFullYear()
+                      : exp.startDate)
+                    : "YYYY"}{" "}
+                  -{" "}
+                  {exp.endDate
+                    ? (exp.endDate instanceof Date
+                      ? exp.endDate.getFullYear()
+                      : exp.endDate)
+                    : "YYYY"}
                 </div>
 
                 <div className="flex justify-end gap-4">
@@ -243,13 +255,13 @@ export default function Education_form() {
                       <div className="relative">
                         <input
                           type="text"
-                          value={exp.jobTitle}
-                          onChange={(e) => handleChange(exp.id, "jobTitle", e.target.value)}
-                          onBlur={() => handleBlur(exp.id, "jobTitle")}
+                          value={exp.schoolname}
+                          onChange={(e) => handleChange(exp.id, "schoolname", e.target.value)}
+                          onBlur={() => handleBlur(exp.id, "schoolname")}
                           placeholder="School name"
                           className="w-full p-3 pr-12 border text-[#a8bdca] text-[16px] font-nunito font-normal rounded-lg bg-[#f7f9fc] shadow-sm focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-[#abdffc] focus:shadow-md transition-all duration-300"
                         />
-                        {exp.touched.jobTitle && exp.jobTitle.trim() !== "" && (
+                        {exp.touched.schoolname && exp.schoolname.trim() !== "" && (
                           <div className="absolute inset-y-0 right-2 flex items-center">
                             <div className="bg-green-500 rounded-full h-4 w-4 flex items-center justify-center">
                               <svg
@@ -277,13 +289,13 @@ export default function Education_form() {
                       <div className="relative">
                         <input
                           type="text"
-                          value={exp.employer}
-                          onChange={(e) => handleChange(exp.id, "employer", e.target.value)}
-                          onBlur={() => handleBlur(exp.id, "employer")}
+                          value={exp.location}
+                          onChange={(e) => handleChange(exp.id, "location", e.target.value)}
+                          onBlur={() => handleBlur(exp.id, "location")}
                           placeholder="Location"
                           className="w-full p-3 border text-[#a8bdca] text-[16px] font-nunito font-normal rounded-lg bg-[#f7f9fc] shadow-sm focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-[#abdffc] focus:shadow-md transition-all duration-300"
                         />
-                        {exp.touched.employer && exp.employer.trim() !== "" && (
+                        {exp.touched.location && exp.location.trim() !== "" && (
                           <div className="absolute inset-y-0 right-2 flex items-center">
                             <div className="bg-green-500 rounded-full h-4 w-4 flex items-center justify-center">
                               <svg
@@ -313,13 +325,13 @@ export default function Education_form() {
                       <div className="relative">
                         <input
                           type="text"
-                          value={exp.location}
-                          onChange={(e) => handleChange(exp.id, "location", e.target.value)}
-                          onBlur={() => handleBlur(exp.id, "location")}
-                          placeholder="Degree"
+                          value={exp.degree}
+                          onChange={(e) => handleChange(exp.id, "degree", e.target.value)}
+                          onBlur={() => handleBlur(exp.id, "degree")}
+                          placeholder="degree"
                           className="w-full p-3 border text-[#a8bdca] text-[16px] font-nunito font-normal rounded-lg bg-[#f7f9fc] shadow-sm focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-[#abdffc] focus:shadow-md transition-all duration-300"
                         />
-                        {exp.touched.location && exp.location.trim() !== "" && (
+                        {exp.touched.degree && exp.degree.trim() !== "" && (
                           <div className="absolute inset-y-0 right-2 flex items-center">
                             <div className="bg-green-500 rounded-full h-4 w-4 flex items-center justify-center">
                               <svg
@@ -342,8 +354,15 @@ export default function Education_form() {
                       <div>
                         <label className="block text-[#374151] text-[16px] font-nunito font-normal mb-1">Start Year</label>
                         <Calendar
-                          value={exp.startDate}
-                          onChange={(e) => handleChange(exp.id, "startDate", e.value)}
+                          value={
+                            exp.startDate
+                              ? new Date(parseInt(exp.startDate), 0, 1)
+                              : null
+                          }
+                          onChange={(e) => {
+                            const selectedValue = e.value instanceof Date ? e.value.getFullYear() : "";
+                            handleChange(exp.id, "startDate", selectedValue);
+                          }}
                           view="year"
                           dateFormat="yy"
                           className="w-full p-3 border text-[#374151] text-[16px] font-nunito font-normal rounded-lg bg-[#f7f9fc] shadow-sm focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-[#abdffc] focus:shadow-md transition-all duration-300"
@@ -354,8 +373,18 @@ export default function Education_form() {
                       <div>
                         <label className="block text-[#374151] text-[16px] font-nunito font-normal mb-1">End Year</label>
                         <Calendar
-                          value={exp.endDate}
-                          onChange={(e) => handleChange(exp.id, "endDate", e.value)}
+                          value={
+                            exp.endDate
+                              ? new Date(parseInt(exp.endDate), 0, 1)
+                              : null
+                          }
+                          onChange={(e) =>
+                            handleChange(
+                              exp.id,
+                              "endDate",
+                              e.value instanceof Date ? e.value.getFullYear() : ""
+                            )
+                          }
                           view="year"
                           dateFormat="yy"
                           className="w-full p-3 border text-[#374151] text-[16px] font-nunito font-normal rounded-lg bg-[#f7f9fc] shadow-sm focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-[#abdffc] focus:shadow-md transition-all duration-300"
@@ -372,7 +401,8 @@ export default function Education_form() {
                     </label>
                     <div>
                       <div className="card rounded-lg">
-                        <Editor className="rounded-lg" onTextChange={(e) => setText(e.htmlValue)} style={{ height: '150px' }} />
+                        <Editor className="rounded-lg" value={exp.text}
+                          onTextChange={(e) => handleChange(exp.id, "text", e.htmlValue)} style={{ height: '150px' }} />
                       </div>
                     </div>
 
@@ -386,7 +416,7 @@ export default function Education_form() {
 
           {/* Add Experience */}
           <button
-            onClick={addExperience}
+            onClick={addEducation}
             className="flex items-center text-[16px] font-nunito font-bold gap-2 text-[#2da2ff] px-4 py-2 rounded-md w-full mt-2"
           >
             <IoMdAdd className="w-6 h-6" /> Add Education
