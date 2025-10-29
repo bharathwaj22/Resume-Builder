@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { IoMdAdd } from "react-icons/io";
 import { FiTrash2 } from "react-icons/fi";
 import { motion, AnimatePresence } from "framer-motion";
@@ -8,6 +8,7 @@ import { FaRegLightbulb } from "react-icons/fa";
 // import { IoIosArrowDown } from "react-icons/io";
 import { FiX } from "react-icons/fi";
 import { FiCheckCircle, FiXCircle } from "react-icons/fi";
+import { CreateContext } from "../App";
 
 
 
@@ -22,29 +23,49 @@ function SkillsForm() {
   const [selected, setSelected] = useState(2);
   const stepWidth = 55;
 
-  const [experiences, setExperiences] = useState([
-    { skill: "", level: 2, id: Date.now() + Math.random() },
-  ]);
+    const { skills, setSkills } = useContext(CreateContext);
+
+  // const [skills, setSkills] = useState([
+  //   { skill: "", level: 2, id: Date.now() + Math.random() },
+  // ]);
+
+  console.log("skills",skills)
 
   const addExperience = () => {
-    setExperiences([
-      ...experiences,
-      { skill: "", level: 2, id: Date.now() + Math.random() },
+    setSkills([
+      ...skills,
+      { skill: "", level: isActive ? 2 : null, id: Date.now() + Math.random() },
     ]);
   };
 
   // Update skill or level individually
   const handleChange = (id, field, value) => {
-    setExperiences((prev) =>
+    setSkills((prev) =>
       prev.map((exp) =>
         exp.id === id ? { ...exp, [field]: value } : exp
       )
     );
   };
 
+
+  const toggleActive = () => {
+  setIsActive((prev) => {
+    const newActive = !prev;
+
+    setSkills((prevSkills) =>
+      prevSkills.map((exp) => ({
+        ...exp,
+        level: newActive ? (exp.level === null ? 2 : exp.level) : null,
+      }))
+    );
+
+    return newActive;
+  });
+};
+
   // Delete a skill
   const handleDelete = (id) => {
-    setExperiences((prev) => prev.filter((exp) => exp.id !== id));
+    setSkills((prev) => prev.filter((exp) => exp.id !== id));
   };
 
 
@@ -88,7 +109,9 @@ function SkillsForm() {
           Add your most relevant professional skills.
         </p>
         <div className="flex  gap-5">  <div
-          onClick={() => setIsActive(!isActive)}
+          // onClick={() => setIsActive(!isActive)}
+            onClick={toggleActive}
+
           className={`relative w-12 h-6 rounded-full cursor-pointer transition ${isActive ? "bg-[#05a2fe]" : "bg-[#ebf1f4]"
             }`}
         >
@@ -103,7 +126,7 @@ function SkillsForm() {
 
 
         <div className="space-y-4 pb-10 mt-3">
-          {experiences.map((exp, idx) => (
+          {skills.map((exp, idx) => (
             <div
               key={exp.id}
               className="border rounded-2xl p-4 bg-white transition-all duration-300 "

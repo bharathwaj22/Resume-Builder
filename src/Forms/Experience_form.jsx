@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useContext } from "react";
 import { FiChevronDown, FiChevronUp, FiTrash2 } from "react-icons/fi";
 import { IoMdAdd } from "react-icons/io";
 
@@ -12,24 +12,27 @@ import { FiX } from "react-icons/fi";
 
 
 import { motion, AnimatePresence } from "framer-motion";
+import { CreateContext } from "../App";
 
 
 export default function Experience_form() {
 
-  const [experiences, setExperiences] = useState([
-    {
-      id: Date.now(),
-      jobTitle: "",
-      employer: "",
-      location: "",
-      startDate: "",
-      endDate: "",
-      isOpen: true,
-      touched: {},
-      showPicker: false,
-      year: new Date().getFullYear(),
-    },
-  ]);
+  // const [experiences, setExperiences] = useState([
+  //   {
+  //     id: Date.now(),
+  //     jobTitle: "",
+  //     employer: "",
+  //     location: "",
+  //     startDate: "",
+  //     endDate: "",
+  //     isOpen: true,
+  //     touched: {},
+  //     showPicker: false,
+  //     year: new Date().getFullYear(),
+  //   },
+  // ]);
+
+  const { experiences, setExperiences } = useContext(CreateContext);
 
   const pickerRefs = useRef({});
   const inputRefs = useRef({});
@@ -49,6 +52,7 @@ export default function Experience_form() {
         location: "",
         startDate: "",
         endDate: "",
+        text: "",
         isOpen: true,
         touched: {},
         showPicker: false,
@@ -437,7 +441,8 @@ export default function Experience_form() {
                     </label>
                     <div>
                       <div className="card rounded-lg">
-                        <Editor className="rounded-lg" onTextChange={(e) => setText(e.htmlValue)} style={{ height: '150px' }} />
+                        <Editor className="rounded-lg" value={exp.text}
+                          onTextChange={(e) => handleChange(exp.id, "text", e.htmlValue)} style={{ height: '150px' }} />
                       </div>
                     </div>
 
@@ -459,132 +464,132 @@ export default function Experience_form() {
         </div>
 
         {skillTipsClicked && (
-        <AnimatePresence>
-          <div className=" z-50 flex items-start justify-end overflow-y-auto overflow-x-hidden  " onClick={() => setSkillTipsClicked(false)}>
-            <div className="absolute inset-0 left-[30%]  flex items-center justify-center  bg-transparent  h-full top-20">
-              {/* Animated modal container */}
-              <motion.div
-                initial={{ y: 70, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                exit={{ y: 70, opacity: 0 }}
-                transition={{
-                  type: "spring",
-                  stiffness: 120,
-                  damping: 18,
-                  duration: 0.4
-                }}
-                className="w-screen py-3 lg:w-[30vw]  rounded-xl bg-white 
+          <AnimatePresence>
+            <div className=" z-50 flex items-start justify-end overflow-y-auto overflow-x-hidden  " onClick={() => setSkillTipsClicked(false)}>
+              <div className="absolute inset-0 left-[30%]  flex items-center justify-center  bg-transparent  h-full top-20">
+                {/* Animated modal container */}
+                <motion.div
+                  initial={{ y: 70, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  exit={{ y: 70, opacity: 0 }}
+                  transition={{
+                    type: "spring",
+                    stiffness: 120,
+                    damping: 18,
+                    duration: 0.4
+                  }}
+                  className="w-screen py-3 lg:w-[30vw]  rounded-xl bg-white 
            border-1 shadow-[0_0_25px_rgba(59,130,246,0.3)]"
 
-              >
-                <div className="flex justify-between items-center  px-4">
-                  <div className=" w-full  font-nunito font-bold text-[14px] text-[#2E404A]">
-                    Experience tips
-                  </div>
-                  <div
-                    onClick={() => setSkillTipsClicked(false)}
-                    className="text-gray-300 font-extrabold text-xl hover:text-gray-400 focus:outline-none w-8 h-8 flex items-center justify-center cursor-pointer"
-                  >
-                    <FiX />
-                  </div>
-                </div>
-                <hr />
-
-                <p className="text-gray-700 text-sm leading-relaxed p-4">
-                  <div className="">
-                    {/* ✅ Positive tips */}
-                    <div className="flex items-start gap-2">
-                      <FiCheckCircle className="text-green-500 text-xl mt-1" />
-                      <div>
-                        <p className="font-nunito font-bold text-[14px] text-[#2E404A]">Skip “responsible for”</p>
-                        <p className="font-nunito font-normal text-[14px] text-[#2E404A]">Use action verbs like “led”, “improved”, or “created.”</p>
-                      </div>
+                >
+                  <div className="flex justify-between items-center  px-4">
+                    <div className=" w-full  font-nunito font-bold text-[14px] text-[#2E404A]">
+                      Experience tips
                     </div>
-
-                    <div className="flex items-start gap-2 mt-3">
-                      <FiCheckCircle className="text-green-500 text-xl mt-1" />
-                      <div>
-                        <p className="font-nunito font-bold text-[14px] text-[#2E404A]">Use bullet points</p>
-                        <p className="font-nunito font-normal text-[14px] text-[#2E404A]">
-                          Make your achievements stand out with concise bullet points.
-                        </p>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start gap-2 mt-3">
-                      <FiCheckCircle className="text-green-500 text-xl mt-1" />
-                      <div>
-                        <p className="font-nunito font-bold text-[14px] text-[#2E404A]">Keep descriptions short and clear</p>
-                        <p className="font-nunito font-normal text-[14px] text-[#2E404A]">
-                          Aim for 4–5 of your strongest, most relevant skills.
-                        </p>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start gap-2 mt-3">
-                      <FiCheckCircle className="text-green-500 text-xl mt-1" />
-                      <div>
-                        <p className="font-nunito font-bold text-[14px] text-[#2E404A]">Show your impact</p>
-                        <p className="font-nunito font-normal text-[14px] text-[#2E404A]">
-                          Highlight your accomplishments, not generic duties.
-                        </p>
-                      </div>
-                    </div>
-
-
-                    <div className="flex items-start gap-2 mt-3">
-                      <FiCheckCircle className="text-green-500 text-xl mt-1" />
-                      <div>
-                        <p className="font-nunito font-bold text-[14px] text-[#2E404A]">Add numbers when possible</p>
-                        <p className="font-nunito font-normal text-[14px] text-[#2E404A]">
-                          Stats speak louder than words and prove impact.
-
-                        </p>
-                      </div>
-                    </div>
-
-                    <hr className="my-2" />
-
-                    {/* ❌ Negative tips */}
-                    <div className="flex items-start gap-2 mt-3">
-                      <FiXCircle className="text-red-500 text-xl mt-1" />
-                      <div>
-                        <p className="font-nunito font-bold text-[14px] text-[#2E404A]">Don't abbreviate job titles</p>
-                        <p className="font-nunito font-normal text-[14px] text-[#2E404A]">
-Write the full job title so it’s easy to understand.                        </p>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start gap-2 mt-3">
-                      <FiXCircle className="text-red-500 text-xl mt-1" />
-                      <div>
-                        <p className="font-nunito font-bold text-[14px] text-[#2E404A]">Don’t use “I” or full sentences</p>
-                        <p className="font-nunito font-normal text-[14px] text-[#2E404A]">
-Keep bullet points short, starting with action verbs.
-
-                        </p>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start gap-2 mt-3">
-                      <FiXCircle className="text-red-500 text-xl mt-1" />
-                      <div>
-                        <p className="font-nunito font-bold text-[14px] text-[#2E404A]">Don’t exaggerate or lie
-</p>
-                        <p className="font-nunito font-normal text-[14px] text-[#2E404A]">
-                          False claims can backfire during interviews.
-                        </p>
-                      </div>
+                    <div
+                      onClick={() => setSkillTipsClicked(false)}
+                      className="text-gray-300 font-extrabold text-xl hover:text-gray-400 focus:outline-none w-8 h-8 flex items-center justify-center cursor-pointer"
+                    >
+                      <FiX />
                     </div>
                   </div>
-                </p>
-              </motion.div>
+                  <hr />
+
+                  <p className="text-gray-700 text-sm leading-relaxed p-4">
+                    <div className="">
+                      {/* ✅ Positive tips */}
+                      <div className="flex items-start gap-2">
+                        <FiCheckCircle className="text-green-500 text-xl mt-1" />
+                        <div>
+                          <p className="font-nunito font-bold text-[14px] text-[#2E404A]">Skip “responsible for”</p>
+                          <p className="font-nunito font-normal text-[14px] text-[#2E404A]">Use action verbs like “led”, “improved”, or “created.”</p>
+                        </div>
+                      </div>
+
+                      <div className="flex items-start gap-2 mt-3">
+                        <FiCheckCircle className="text-green-500 text-xl mt-1" />
+                        <div>
+                          <p className="font-nunito font-bold text-[14px] text-[#2E404A]">Use bullet points</p>
+                          <p className="font-nunito font-normal text-[14px] text-[#2E404A]">
+                            Make your achievements stand out with concise bullet points.
+                          </p>
+                        </div>
+                      </div>
+
+                      <div className="flex items-start gap-2 mt-3">
+                        <FiCheckCircle className="text-green-500 text-xl mt-1" />
+                        <div>
+                          <p className="font-nunito font-bold text-[14px] text-[#2E404A]">Keep descriptions short and clear</p>
+                          <p className="font-nunito font-normal text-[14px] text-[#2E404A]">
+                            Aim for 4–5 of your strongest, most relevant skills.
+                          </p>
+                        </div>
+                      </div>
+
+                      <div className="flex items-start gap-2 mt-3">
+                        <FiCheckCircle className="text-green-500 text-xl mt-1" />
+                        <div>
+                          <p className="font-nunito font-bold text-[14px] text-[#2E404A]">Show your impact</p>
+                          <p className="font-nunito font-normal text-[14px] text-[#2E404A]">
+                            Highlight your accomplishments, not generic duties.
+                          </p>
+                        </div>
+                      </div>
+
+
+                      <div className="flex items-start gap-2 mt-3">
+                        <FiCheckCircle className="text-green-500 text-xl mt-1" />
+                        <div>
+                          <p className="font-nunito font-bold text-[14px] text-[#2E404A]">Add numbers when possible</p>
+                          <p className="font-nunito font-normal text-[14px] text-[#2E404A]">
+                            Stats speak louder than words and prove impact.
+
+                          </p>
+                        </div>
+                      </div>
+
+                      <hr className="my-2" />
+
+                      {/* ❌ Negative tips */}
+                      <div className="flex items-start gap-2 mt-3">
+                        <FiXCircle className="text-red-500 text-xl mt-1" />
+                        <div>
+                          <p className="font-nunito font-bold text-[14px] text-[#2E404A]">Don't abbreviate job titles</p>
+                          <p className="font-nunito font-normal text-[14px] text-[#2E404A]">
+                            Write the full job title so it’s easy to understand.                        </p>
+                        </div>
+                      </div>
+
+                      <div className="flex items-start gap-2 mt-3">
+                        <FiXCircle className="text-red-500 text-xl mt-1" />
+                        <div>
+                          <p className="font-nunito font-bold text-[14px] text-[#2E404A]">Don’t use “I” or full sentences</p>
+                          <p className="font-nunito font-normal text-[14px] text-[#2E404A]">
+                            Keep bullet points short, starting with action verbs.
+
+                          </p>
+                        </div>
+                      </div>
+
+                      <div className="flex items-start gap-2 mt-3">
+                        <FiXCircle className="text-red-500 text-xl mt-1" />
+                        <div>
+                          <p className="font-nunito font-bold text-[14px] text-[#2E404A]">Don’t exaggerate or lie
+                          </p>
+                          <p className="font-nunito font-normal text-[14px] text-[#2E404A]">
+                            False claims can backfire during interviews.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </p>
+                </motion.div>
+              </div>
             </div>
-          </div>
-        </AnimatePresence>
-      )}
+          </AnimatePresence>
+        )}
       </div>
-      
+
 
     </section>
   );

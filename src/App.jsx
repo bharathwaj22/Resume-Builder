@@ -48,6 +48,7 @@ function App() {
       jobTitle: "",
       employer: "",
       location: "",
+      text:"",
       startDate: null,
       endDate: null,
       isOpen: true,
@@ -57,13 +58,40 @@ function App() {
     },
   ]);
 
+   const [education, setEducation] = useState([
+    {
+      id: Date.now(),
+      schoolname: "",
+        degree: "",
+        location: "",
+        text: "",
+        startDate: null,
+        endDate: null,
+        isOpen: true,
+        touched: {},
+        showPicker: false,
+        year: new Date().getFullYear(),
+    },
+  ]);
+
+  // skills
+
+  const [skills, setSkills] = useState([
+      { skill: "", level: 2, id: Date.now() + Math.random() },
+    ]);
+
+  // summary
+
+
+    const [text, setText] = useState("");
+
 
 
 
   return (
     <>
 
-      <CreateContext.Provider value={{ globalState, setGlobalState, firstName, setFirstName, lastName, setLastName, jobTitle, setJobTitle, phone, setPhone, email, setEmail, tags, setTags, tones, setTones, address, setAddress, city, setCity, country, setCountry, postcode, setPostcode,linkedin, setLinkedin,portfolio, setPortfolio, experiences, setExperiences }}>
+      <CreateContext.Provider value={{ globalState, setGlobalState, firstName, setFirstName, lastName, setLastName, jobTitle, setJobTitle, phone, setPhone, email, setEmail, tags, setTags, tones, setTones, address, setAddress, city, setCity, country, setCountry, postcode, setPostcode,linkedin, setLinkedin,portfolio, setPortfolio, experiences, setExperiences,education, setEducation,text, setText,skills, setSkills }}>
         <BrowserRouter>
           <Layout>
             <Routes>
