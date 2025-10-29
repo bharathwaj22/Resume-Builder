@@ -29,24 +29,24 @@ const Login = () => {
           Welcome back! Please log in
         </h2>
 
-        {/* Google Login */}
+        {/* Google Login
         <button className="w-full flex items-center justify-center bg-white gap-2 border rounded-lg py-2 hover:bg-gray-50 transition">
           <FcGoogle size={22} />
           <span className="text-gray-700 font-medium">Log in with Google</span>
         </button>
 
         {/* Apple Login */}
-        <button className="w-full flex items-center justify-center bg-white  gap-2 border rounded-lg py-2 mt-3 hover:bg-gray-50 transition">
+        {/* <button className="w-full flex items-center justify-center bg-white  gap-2 border rounded-lg py-2 mt-3 hover:bg-gray-50 transition">
           <FaApple size={22} />
           <span className="text-gray-700 font-medium">Log in with Apple</span>
-        </button>
+        </button> */} 
 
         {/* Divider */}
-        <div className="flex items-center my-6">
+        {/* <div className="flex items-center my-6">
           <div className="flex-1 h-px bg-gray-200"></div>
           <span className="px-3 text-gray-400 text-sm font-medium">OR</span>
           <div className="flex-1 h-px bg-gray-200"></div>
-        </div>
+        </div> */}
 
         {/* Email Field */}
         <div className="text-left mb-4">

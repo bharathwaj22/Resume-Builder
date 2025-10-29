@@ -29,6 +29,10 @@ function App() {
 
   const [email, setEmail] = useState("");
 
+   const [linkedin, setLinkedin] = useState("");
+  
+      const [portfolio, setPortfolio] = useState("");
+
   const [tags, setTags] = useState([]);
   const [tones, setTones] = useState([]);
 
@@ -59,7 +63,7 @@ function App() {
   return (
     <>
 
-      <CreateContext.Provider value={{ globalState, setGlobalState, firstName, setFirstName, lastName, setLastName, jobTitle, setJobTitle, phone, setPhone, email, setEmail, tags, setTags, tones, setTones, address, setAddress, city, setCity, country, setCountry, postcode, setPostcode, experiences, setExperiences }}>
+      <CreateContext.Provider value={{ globalState, setGlobalState, firstName, setFirstName, lastName, setLastName, jobTitle, setJobTitle, phone, setPhone, email, setEmail, tags, setTags, tones, setTones, address, setAddress, city, setCity, country, setCountry, postcode, setPostcode,linkedin, setLinkedin,portfolio, setPortfolio, experiences, setExperiences }}>
         <BrowserRouter>
           <Layout>
             <Routes>

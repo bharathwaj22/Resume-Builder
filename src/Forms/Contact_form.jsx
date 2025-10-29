@@ -17,6 +17,10 @@ export default function ContactForm() {
   const { city, setCity } = useContext(CreateContext);
   const { country, setCountry } = useContext(CreateContext);
   const { postcode, setPostcode } = useContext(CreateContext);
+  const { linkedin, setLinkedin } = useContext(CreateContext);
+  const { portfolio, setPortfolio } = useContext(CreateContext);
+
+
 
 
 
@@ -45,6 +49,10 @@ export default function ContactForm() {
   const [countryTouched, setCountryTouched] = useState(false);
   // const [postcode, setPostcode] = useState("");
   const [postTouched, setPostTouched] = useState("");
+
+  const [linkedinTouched, setLinkedinTouched] = useState(false);
+
+  const [portfolioTouched, setPortfolioTouched] = useState(false);
   const [showAdditional, setShowAdditional] = useState(false);
 
 
@@ -165,230 +173,230 @@ export default function ContactForm() {
   //   }
   // };
 
-const jobData={
-  
-  technology: {
-    title: "Technology / Software Engineering / IT",
-    tones: ["Analytical", "Technical", "Detail-oriented"],
-    keywords: [
-      "Agile", "APIs", "CI/CD", "Cloud", "Debugging", "Automation",
-      "Git", "JavaScript", "Python", "React", "Node.js", "AWS", "DevOps"
-    ],
-    Focus: [
-      "Technical stack proficiency",
-      "Projects with measurable impact (speed, efficiency, uptime)",
-      "Collaboration in Agile/Scrum teams",
-      "GitHub / portfolio links",
-      "Security awareness and scalability experience"
-    ],
-    Structure_Additions: [
-      "Technical Skills section before Experience",
-      "Optional Key Projects section with GitHub links"
-    ],
-    Achievement_Bullets: [
-      "Developed a RESTful API in Node.js that reduced system latency by 40%.",
-      "Implemented CI/CD pipelines with Jenkins and Docker, improving deployment frequency by 50%."
-    ]
-  },
+  const jobData = {
 
-  marketing: {
-    title: "Marketing / Advertising / Content",
-    tones: ["Persuasive", "Creative", "Metrics-driven"],
-    keywords: [
-      "ROI", "Brand Awareness", "SEO", "Engagement", "Campaigns", "PPC", "Analytics", "Copywriting", "Social Media"
-    ],
-    Focus: [
-      "Campaign results (engagement %, conversions, audience growth)",
-      "Creative storytelling balanced with data insight",
-      "Tools (Google Ads, Meta Ads, HubSpot, SEMrush, Canva, etc.)"
-    ],
-    Achievement_Bullets: [
-      "Increased organic traffic by 120% through SEO-optimized blog content.",
-      "Managed £30K annual ad budget with average 3.8x ROAS."
-    ]
-  },
+    technology: {
+      title: "Technology / Software Engineering / IT",
+      tones: ["Analytical", "Technical", "Detail-oriented"],
+      keywords: [
+        "Agile", "APIs", "CI/CD", "Cloud", "Debugging", "Automation",
+        "Git", "JavaScript", "Python", "React", "Node.js", "AWS", "DevOps"
+      ],
+      Focus: [
+        "Technical stack proficiency",
+        "Projects with measurable impact (speed, efficiency, uptime)",
+        "Collaboration in Agile/Scrum teams",
+        "GitHub / portfolio links",
+        "Security awareness and scalability experience"
+      ],
+      Structure_Additions: [
+        "Technical Skills section before Experience",
+        "Optional Key Projects section with GitHub links"
+      ],
+      Achievement_Bullets: [
+        "Developed a RESTful API in Node.js that reduced system latency by 40%.",
+        "Implemented CI/CD pipelines with Jenkins and Docker, improving deployment frequency by 50%."
+      ]
+    },
 
-  finance: {
-    title: "Finance / Accounting / Banking",
-    tones: ["Precise", "Formal", "Data-driven"],
-    keywords: [
-      "Financial Analysis", "Forecasting", "Audit", "Compliance", "GAAP", "Risk Management", "Variance", "Reconciliation"
-    ],
-    Focus: [
-      "Quantitative achievements (savings, growth, efficiency)",
-      "Compliance and accuracy",
-      "Use of ERP or financial systems (SAP, QuickBooks, Oracle)"
-    ],
-    Achievement_Bullets: [
-      "Managed financial forecasting for £5M budget with <1% variance.",
-      "Streamlined month-end closing process, reducing reporting time by 30%."
-    ]
-  },
+    marketing: {
+      title: "Marketing / Advertising / Content",
+      tones: ["Persuasive", "Creative", "Metrics-driven"],
+      keywords: [
+        "ROI", "Brand Awareness", "SEO", "Engagement", "Campaigns", "PPC", "Analytics", "Copywriting", "Social Media"
+      ],
+      Focus: [
+        "Campaign results (engagement %, conversions, audience growth)",
+        "Creative storytelling balanced with data insight",
+        "Tools (Google Ads, Meta Ads, HubSpot, SEMrush, Canva, etc.)"
+      ],
+      Achievement_Bullets: [
+        "Increased organic traffic by 120% through SEO-optimized blog content.",
+        "Managed £30K annual ad budget with average 3.8x ROAS."
+      ]
+    },
 
-  healthcare: {
-    title: "Healthcare / Nursing / Medicine",
-    tones: ["Compassionate", "Professional", "Patient-focused"],
-    keywords: [
-      "Patient Care", "Clinical Procedures", "EMR", "Safety", "Interdisciplinary Collaboration", "Documentation", "HIPAA"
-    ],
-    Focus: [
-      "Patient outcomes",
-      "Certifications and licenses",
-      "Workload (patients/day), collaboration with other departments",
-      "Use of healthcare tech systems (e.g., EMR/EHR)"
-    ],
-    Achievement_Bullets: [
-      "Delivered daily care to 15+ patients with a 98% patient satisfaction rate.",
-      "Assisted in implementing a new EMR system improving data retrieval time by 45%."
-    ]
-  },
+    finance: {
+      title: "Finance / Accounting / Banking",
+      tones: ["Precise", "Formal", "Data-driven"],
+      keywords: [
+        "Financial Analysis", "Forecasting", "Audit", "Compliance", "GAAP", "Risk Management", "Variance", "Reconciliation"
+      ],
+      Focus: [
+        "Quantitative achievements (savings, growth, efficiency)",
+        "Compliance and accuracy",
+        "Use of ERP or financial systems (SAP, QuickBooks, Oracle)"
+      ],
+      Achievement_Bullets: [
+        "Managed financial forecasting for £5M budget with <1% variance.",
+        "Streamlined month-end closing process, reducing reporting time by 30%."
+      ]
+    },
 
-  education: {
-    title: "Education / Teaching / Academia",
-    tones: ["Supportive", "Structured", "Communicative"],
-    keywords: [
-      "Curriculum Design", "Lesson Planning", "Student Engagement", "Differentiation", "Assessment", "SEN"
-    ],
-    Focus: [
-      "Measurable student progress",
-      "Lesson innovation",
-      "Classroom management",
-      "Use of educational tools (Google Classroom, Canvas)"
-    ],
-    Achievement_Bullets: [
-      "Improved average class test scores by 18% through interactive learning methods.",
-      "Designed digital curriculum adopted by 3 departments."
-    ]
-  },
+    healthcare: {
+      title: "Healthcare / Nursing / Medicine",
+      tones: ["Compassionate", "Professional", "Patient-focused"],
+      keywords: [
+        "Patient Care", "Clinical Procedures", "EMR", "Safety", "Interdisciplinary Collaboration", "Documentation", "HIPAA"
+      ],
+      Focus: [
+        "Patient outcomes",
+        "Certifications and licenses",
+        "Workload (patients/day), collaboration with other departments",
+        "Use of healthcare tech systems (e.g., EMR/EHR)"
+      ],
+      Achievement_Bullets: [
+        "Delivered daily care to 15+ patients with a 98% patient satisfaction rate.",
+        "Assisted in implementing a new EMR system improving data retrieval time by 45%."
+      ]
+    },
 
-  sales: {
-    title: "Sales / Retail / Customer Service",
-    tones: ["Energetic", "Results-oriented", "Personable"],
-    keywords: [
-      "Targets", "Upselling", "CRM", "Customer Satisfaction", "Retention", "Negotiation"
-    ],
-    Focus: [
-      "Sales figures or KPIs",
-      "Customer retention or satisfaction rates",
-      "Interpersonal skills and problem-solving",
-      "Awards or recognition"
-    ],
-    Achievement_Bullets: [
-      "Exceeded quarterly sales targets by 30%.",
-      "Maintained 95% customer satisfaction rating across 300+ clients."
-    ]
-  },
+    education: {
+      title: "Education / Teaching / Academia",
+      tones: ["Supportive", "Structured", "Communicative"],
+      keywords: [
+        "Curriculum Design", "Lesson Planning", "Student Engagement", "Differentiation", "Assessment", "SEN"
+      ],
+      Focus: [
+        "Measurable student progress",
+        "Lesson innovation",
+        "Classroom management",
+        "Use of educational tools (Google Classroom, Canvas)"
+      ],
+      Achievement_Bullets: [
+        "Improved average class test scores by 18% through interactive learning methods.",
+        "Designed digital curriculum adopted by 3 departments."
+      ]
+    },
 
-  engineering: {
-    title: "Engineering / Construction / Manufacturing",
-    tones: ["Technical", "Safety-conscious", "Results-driven"],
-    keywords: [
-      "CAD", "Project Management", "Quality Control", "Safety", "Blueprint Reading", "ISO Standards"
-    ],
-    Focus: [
-      "Projects delivered (on-time, under budget)",
-      "Technical design or machinery proficiency",
-      "Safety compliance",
-      "Collaboration with cross-functional teams"
-    ],
-    Achievement_Bullets: [
-      "Supervised £2M construction project completed 3 weeks ahead of schedule.",
-      "Reduced machine downtime by 25% through preventive maintenance plan."
-    ]
-  },
+    sales: {
+      title: "Sales / Retail / Customer Service",
+      tones: ["Energetic", "Results-oriented", "Personable"],
+      keywords: [
+        "Targets", "Upselling", "CRM", "Customer Satisfaction", "Retention", "Negotiation"
+      ],
+      Focus: [
+        "Sales figures or KPIs",
+        "Customer retention or satisfaction rates",
+        "Interpersonal skills and problem-solving",
+        "Awards or recognition"
+      ],
+      Achievement_Bullets: [
+        "Exceeded quarterly sales targets by 30%.",
+        "Maintained 95% customer satisfaction rating across 300+ clients."
+      ]
+    },
 
-  law: {
-    title: "Law / Legal / Compliance",
-    tones: ["Formal", "Detail-oriented", "Precise"],
-    keywords: [
-      "Case Management", "Litigation", "Research", "Drafting", "Compliance", "GDPR", "Corporate Law"
-    ],
-    Focus: [
-      "Case outcomes",
-      "Legal research and documentation skills",
-      "Confidentiality and precision",
-      "Regulatory experience"
-    ],
-    Achievement_Bullets: [
-      "Drafted 50+ legal documents with 100% compliance accuracy.",
-      "Supported litigation team in achieving 85% success rate in civil cases."
-    ]
-  },
+    engineering: {
+      title: "Engineering / Construction / Manufacturing",
+      tones: ["Technical", "Safety-conscious", "Results-driven"],
+      keywords: [
+        "CAD", "Project Management", "Quality Control", "Safety", "Blueprint Reading", "ISO Standards"
+      ],
+      Focus: [
+        "Projects delivered (on-time, under budget)",
+        "Technical design or machinery proficiency",
+        "Safety compliance",
+        "Collaboration with cross-functional teams"
+      ],
+      Achievement_Bullets: [
+        "Supervised £2M construction project completed 3 weeks ahead of schedule.",
+        "Reduced machine downtime by 25% through preventive maintenance plan."
+      ]
+    },
 
-  design: {
-    title: "Design / Arts / Media",
-    tones: ["Visual", "Creative", "Concise"],
-    keywords: [
-      "UX/UI", "Branding", "Adobe Suite", "Typography", "Storytelling", "Wireframing"
-    ],
-    Focus: [
-      "Portfolio links",
-      "Design impact on engagement or conversions",
-      "Collaboration with developers or marketing teams",
-      "Aesthetic consistency"
-    ],
-    Achievement_Bullets: [
-      "Designed landing pages that improved user retention by 32%.",
-      "Rebranded company identity leading to 20% increase in client inquiries."
-    ]
-  },
+    law: {
+      title: "Law / Legal / Compliance",
+      tones: ["Formal", "Detail-oriented", "Precise"],
+      keywords: [
+        "Case Management", "Litigation", "Research", "Drafting", "Compliance", "GDPR", "Corporate Law"
+      ],
+      Focus: [
+        "Case outcomes",
+        "Legal research and documentation skills",
+        "Confidentiality and precision",
+        "Regulatory experience"
+      ],
+      Achievement_Bullets: [
+        "Drafted 50+ legal documents with 100% compliance accuracy.",
+        "Supported litigation team in achieving 85% success rate in civil cases."
+      ]
+    },
 
-  data: {
-    title: "Data Science / Analytics",
-    tones: ["Analytical", "Quantitative", "Evidence-based"],
-    keywords: [
-      "Machine Learning", "SQL", "Python", "Data Visualization", "Regression", "Tableau", "Power BI"
-    ],
-    Focus: [
-      "Datasets and models used",
-      "Business insights derived",
-      "Predictive analysis results",
-      "Tools and frameworks"
-    ],
-    Achievement_Bullets: [
-      "Built ML model predicting churn with 92% accuracy.",
-      "Automated reporting dashboards saving 15 hours weekly."
-    ]
-  },
+    design: {
+      title: "Design / Arts / Media",
+      tones: ["Visual", "Creative", "Concise"],
+      keywords: [
+        "UX/UI", "Branding", "Adobe Suite", "Typography", "Storytelling", "Wireframing"
+      ],
+      Focus: [
+        "Portfolio links",
+        "Design impact on engagement or conversions",
+        "Collaboration with developers or marketing teams",
+        "Aesthetic consistency"
+      ],
+      Achievement_Bullets: [
+        "Designed landing pages that improved user retention by 32%.",
+        "Rebranded company identity leading to 20% increase in client inquiries."
+      ]
+    },
 
-  hr: {
-    title: "Human Resources / Recruitment",
-    tones: ["Empathetic", "Structured", "Strategic"],
-    keywords: [
-      "Talent Acquisition", "Employee Relations", "HRIS", "Performance Management", "Onboarding"
-    ],
-    Focus: [
-      "Employee satisfaction and retention metrics",
-      "Hiring volume or efficiency",
-      "HR policy implementation",
-      "Training programs or diversity initiatives"
-    ],
-    Achievement_Bullets: [
-      "Reduced employee turnover by 18% through engagement initiatives.",
-      "Streamlined recruitment pipeline, cutting hiring time from 45 to 28 days."
-    ]
-  },
+    data: {
+      title: "Data Science / Analytics",
+      tones: ["Analytical", "Quantitative", "Evidence-based"],
+      keywords: [
+        "Machine Learning", "SQL", "Python", "Data Visualization", "Regression", "Tableau", "Power BI"
+      ],
+      Focus: [
+        "Datasets and models used",
+        "Business insights derived",
+        "Predictive analysis results",
+        "Tools and frameworks"
+      ],
+      Achievement_Bullets: [
+        "Built ML model predicting churn with 92% accuracy.",
+        "Automated reporting dashboards saving 15 hours weekly."
+      ]
+    },
 
-  operations: {
-    title: "Administration / Operations / Logistics",
-    tones: ["Organized", "Efficient", "Dependable"],
-    keywords: [
-      "Scheduling", "Inventory", "Vendor Management", "Process Improvement", "MS Office", "Reporting"
-    ],
-    Focus: [
-      "Operational efficiency",
-      "Communication and coordination",
-      "Cost savings or time improvements",
-      "System or process optimization"
-    ],
-    Achievement_Bullets: [
-      "Coordinated logistics for 300+ deliveries weekly, maintaining 98% on-time rate.",
-      "Implemented digital filing system reducing retrieval time by 40%."
-    ]
+    hr: {
+      title: "Human Resources / Recruitment",
+      tones: ["Empathetic", "Structured", "Strategic"],
+      keywords: [
+        "Talent Acquisition", "Employee Relations", "HRIS", "Performance Management", "Onboarding"
+      ],
+      Focus: [
+        "Employee satisfaction and retention metrics",
+        "Hiring volume or efficiency",
+        "HR policy implementation",
+        "Training programs or diversity initiatives"
+      ],
+      Achievement_Bullets: [
+        "Reduced employee turnover by 18% through engagement initiatives.",
+        "Streamlined recruitment pipeline, cutting hiring time from 45 to 28 days."
+      ]
+    },
+
+    operations: {
+      title: "Administration / Operations / Logistics",
+      tones: ["Organized", "Efficient", "Dependable"],
+      keywords: [
+        "Scheduling", "Inventory", "Vendor Management", "Process Improvement", "MS Office", "Reporting"
+      ],
+      Focus: [
+        "Operational efficiency",
+        "Communication and coordination",
+        "Cost savings or time improvements",
+        "System or process optimization"
+      ],
+      Achievement_Bullets: [
+        "Coordinated logistics for 300+ deliveries weekly, maintaining 98% on-time rate.",
+        "Implemented digital filing system reducing retrieval time by 40%."
+      ]
+    }
+
+
   }
-
-
-}
   const jobTitles = Object.keys(jobData).map((key) => ({
     label: jobData[key].title,
     value: jobData[key].title
@@ -686,47 +694,47 @@ const jobData={
 
           {/* focus */}
 
-         {selectedJob && (
-  <div className="bg-[#f9fbff] border mb-3 border-[#dce7f3] rounded-lg p-5 shadow-sm transition-all duration-300 space-y-5">
+          {selectedJob && (
+            <div className="bg-[#f9fbff] border mb-3 border-[#dce7f3] rounded-lg p-5 shadow-sm transition-all duration-300 space-y-5">
 
-    {/* Focus */}
-    {selectedJob?.Focus?.length > 0 && (
-      <section>
-        <h3 className="text-[#1c2c3f] font-semibold text-lg mb-2">Focus Areas:</h3>
-        <ul className="list-disc pl-5 space-y-1 text-[#4a5b6a] text-[15px] font-nunito">
-          {selectedJob.Focus.map((point, index) => (
-            <li key={index}>{point}</li>
-          ))}
-        </ul>
-      </section>
-    )}
+              {/* Focus */}
+              {selectedJob?.Focus?.length > 0 && (
+                <section>
+                  <h3 className="text-[#1c2c3f] font-semibold text-lg mb-2">Focus Areas:</h3>
+                  <ul className="list-disc pl-5 space-y-1 text-[#4a5b6a] text-[15px] font-nunito">
+                    {selectedJob.Focus.map((point, index) => (
+                      <li key={index}>{point}</li>
+                    ))}
+                  </ul>
+                </section>
+              )}
 
-    {/* Structure Additions */}
-    {selectedJob?.Structure_Additions?.length > 0 && (
-      <section>
-        <h3 className="text-[#1c2c3f] font-semibold text-lg mb-2">Structure Additions:</h3>
-        <ul className="list-disc pl-5 space-y-1 text-[#4a5b6a] text-[15px] font-nunito">
-          {selectedJob.Structure_Additions.map((point, index) => (
-            <li key={index}>{point}</li>
-          ))}
-        </ul>
-      </section>
-    )}
+              {/* Structure Additions */}
+              {selectedJob?.Structure_Additions?.length > 0 && (
+                <section>
+                  <h3 className="text-[#1c2c3f] font-semibold text-lg mb-2">Structure Additions:</h3>
+                  <ul className="list-disc pl-5 space-y-1 text-[#4a5b6a] text-[15px] font-nunito">
+                    {selectedJob.Structure_Additions.map((point, index) => (
+                      <li key={index}>{point}</li>
+                    ))}
+                  </ul>
+                </section>
+              )}
 
-    {/* Achievement Bullets */}
-    {selectedJob?.Achievement_Bullets?.length > 0 && (
-      <section>
-        <h3 className="text-[#1c2c3f] font-semibold text-lg mb-2">Example Achievements:</h3>
-        <ul className="list-disc pl-5 space-y-1 text-[#4a5b6a] text-[15px] font-nunito">
-          {selectedJob.Achievement_Bullets.map((point, index) => (
-            <li key={index}>{point}</li>
-          ))}
-        </ul>
-      </section>
-    )}
+              {/* Achievement Bullets */}
+              {selectedJob?.Achievement_Bullets?.length > 0 && (
+                <section>
+                  <h3 className="text-[#1c2c3f] font-semibold text-lg mb-2">Example Achievements:</h3>
+                  <ul className="list-disc pl-5 space-y-1 text-[#4a5b6a] text-[15px] font-nunito">
+                    {selectedJob.Achievement_Bullets.map((point, index) => (
+                      <li key={index}>{point}</li>
+                    ))}
+                  </ul>
+                </section>
+              )}
 
-  </div>
-)}
+            </div>
+          )}
 
 
 
@@ -810,6 +818,81 @@ const jobData={
               className={`overflow-hidden transition-all duration-500 ease-in-out ${showAdditional ? "max-h-96 opacity-100 mt-4" : "max-h-0 opacity-0"
                 }`}
             >
+
+              {/* linked protifol */}
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                {/* Phone */}
+                <div>
+                  <label htmlFor="LinkedIn" className="block text-[#374151] text-[16px] font-nunito font-normal mb-1">
+                    LinkedIn
+                  </label>
+                  <div className="relative">
+                    <input
+                      type="url"
+                      id="LinkedIn"
+                      value={linkedin}
+                      onChange={(e) => setLinkedin(e.target.value)}
+                      onBlur={() => setLinkedinTouched(true)}
+                      placeholder="LinkedIn"
+                      className="w-full p-3 pr-12 border text-[#a8bdca] text-[16px] font-nunito font-normal rounded-lg bg-[#f7f9fc] shadow-sm focus:outline-none  focus:border-blue-500    focus:ring-2 focus:ring-[#abdffc]  focus:shadow-md  transition-all duration-300"
+                    />
+                    {isValid(linkedin, linkedinTouched) && (
+                      <div className="absolute inset-y-0 right-2 flex items-center">
+                        <div className="bg-green-500 rounded-full h-4 w-4 flex items-center justify-center">
+                          <svg
+                            className="h-3 w-3 text-white"
+                            fill="currentColor"
+                            viewBox="0 0 20 20"
+                          >
+                            <path
+                              fillRule="evenodd"
+                              d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 13.586l7.293-7.293a1 1 0 011.414 0z"
+                              clipRule="evenodd"
+                            />
+                          </svg>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                </div>
+
+                {/* Email */}
+                <div>
+                  <label htmlFor="Portfolio" className="block text-[#374151] text-[16px] font-nunito font-normal mb-1">
+                    Portfolio / Personal Site
+                  </label>
+                  <div className="relative">
+                    <input
+                      type="text"
+                      id="Portfolio"
+                      value={portfolio}
+                      onChange={(e) => setPortfolio(e.target.value)}
+                      onBlur={() => setPortfolioTouched(true)}
+                      placeholder="Portfolio"
+                      className="w-full p-3 pr-12 border text-[#a8bdca] text-[16px] font-nunito font-normal rounded-lg bg-[#f7f9fc] shadow-sm focus:outline-none  focus:border-blue-500    focus:ring-2 focus:ring-[#abdffc]  focus:shadow-md  transition-all duration-300"
+                    />
+                    {isValid(portfolio, portfolioTouched) && (
+                      <div className="absolute inset-y-0 right-2 flex items-center">
+                        <div className="bg-green-500 rounded-full h-4 w-4 flex items-center justify-center">
+                          <svg
+                            className="h-3 w-3 text-white"
+                            fill="currentColor"
+                            viewBox="0 0 20 20"
+                          >
+                            <path
+                              fillRule="evenodd"
+                              d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 13.586l7.293-7.293a1 1 0 011.414 0z"
+                              clipRule="evenodd"
+                            />
+                          </svg>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </div>
+
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                 {/* Phone */}
                 <div>

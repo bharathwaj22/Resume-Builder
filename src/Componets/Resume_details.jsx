@@ -12,6 +12,7 @@ import Image6 from '../assets/images/resume6.svg.svg'
 import { useLocation } from 'react-router-dom';
 import { CreateContext } from '../App';
 import Resume1 from '../Templates/Resume1';
+import Resume2 from '../Templates/Resume2';
 
 
 
@@ -185,6 +186,9 @@ function Resume_details() {
                             }}
                         >
                             <Resume1 />
+
+                            {/* <Resume2/> */}
+                            
                         </div>
                     </div>
                 </div>
