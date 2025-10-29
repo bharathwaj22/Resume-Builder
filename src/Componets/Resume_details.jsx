@@ -13,6 +13,8 @@ import { useLocation } from 'react-router-dom';
 import { CreateContext } from '../App';
 import Resume1 from '../Templates/Resume1';
 import Resume2 from '../Templates/Resume2';
+import Resume3 from '../Templates/Resume3';
+import Resume4 from '../Templates/Resume4';
 
 
 
@@ -73,14 +75,15 @@ function Resume_details() {
     const prevTab = tabsData[currentIndex - 1];
 
     return (
-        <div className='bg-[#eff2f9] h-full md:h-screen md:overflow-hidden'>
-            <Header />
+        // <div className='bg-[#eff2f9] h-[100vh] overflow-hidden '>
+        // <>
+        //     <Header />
 
-            <section className='flex flex-wrap md:flex-nowrap md:h-screen md:overflow-hidden  p-3 '>
+            <section className='bg-[#eff2f9] flex flex-wrap md:flex-nowrap h-[100vh] overflow-hidden    p-3 '>
                 {/* left tab  */}
-                <div className=' w-full md:w-[50%]  md:h-screen md:overflow-hidden'>
+                <div className=' w-full md:w-[50%] flex flex-col  gap-2'>
 
-                    <div className='bg-white  rounded-lg p-1 '>
+                    <div className='bg-white flex-1  rounded-lg p-1 overflow-auto '>
 
 
                         <div className="relative w-full">
@@ -144,8 +147,9 @@ function Resume_details() {
                     </div>
                     {/* perivous */}
 
-                    <div className="bg-white p-4 mt-1 text-right rounded-lg flex justify-between  ">
-                        {prevTab && (
+                    <div className="bg-white p-4  text-right rounded-lg  relative  ">
+                        <div className='flex justify-between'>
+                            {prevTab && (
                             <button
                                 className="bg-white text-[#374151] border border-gray-300 px-6 py-2 rounded-lg mr-3 font-nunito font-semibold hover:bg-gray-100 transition-colors duration-300"
                                 onClick={() => setActiveTab(prevTab.id)}
@@ -162,6 +166,7 @@ function Resume_details() {
                                 Next {nextTab.name}
                             </button>
                         )}
+                        </div>
                     </div>
                 </div>
                 {/* right resume */}
@@ -188,6 +193,8 @@ function Resume_details() {
                             <Resume1 />
 
                             {/* <Resume2/> */}
+                            {/* <Resume3/> */}
+                            {/* <Resume4/> */}
                             
                         </div>
                     </div>
@@ -198,7 +205,8 @@ function Resume_details() {
 
 
             </section>
-        </div>
+            // {/* </> */}
+        // </div>
     )
 }
 

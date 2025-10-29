@@ -54,7 +54,7 @@ function SkillsForm() {
 
   return (
     <section className="">
-      <div className=" relative p-4 bg-white h-[500px] overflow-y-auto scrollbar-thin scrollbar-thumb-blue-500 scrollbar-track-gray-200 scrollbar-thumb-rounded-md">
+      <div className=" relative p-4 bg-white h-[500px]  scrollbar-thin scrollbar-thumb-blue-500 scrollbar-track-gray-200 scrollbar-thumb-rounded-md">
         <div className="flex justify-between">  <h1 className="text-[24px] font-roboto ffont-bold  text-[#2E404A]  mb-2">
           Skills
         </h1>

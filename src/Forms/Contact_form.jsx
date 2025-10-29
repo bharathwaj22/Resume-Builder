@@ -421,7 +421,7 @@ export default function ContactForm() {
   return (
 
     <section>
-      <div className="p-4 bg-white h-[500px] overflow-y-auto scrollbar-thin scrollbar-thumb-blue-500 scrollbar-track-gray-200 scrollbar-thumb-rounded-md">
+      <div className="p-4 bg-white h-[500px]  scrollbar-thin scrollbar-thumb-blue-500 scrollbar-track-gray-200 scrollbar-thumb-rounded-md">
         <h1 className="text-[24px] font-roboto font-semibold text-[#2e404a] mb-2">Contacts</h1>
         <p className="text-[#3e5679] text-[16px] font-nunito font-normal mb-8">
           Add your up-to-date contact information so employers and recruiters can easily reach you.

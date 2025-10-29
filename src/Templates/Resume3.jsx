@@ -29,9 +29,14 @@ const Resume3 = () => {
   ]
 
   return (
-    <div className='flex w-[50%] mx-auto '>
+    <div className=" bg-white border border-gray-100 flex gap-2 mx-auto " style={{
+            width: "210mm",
+            // height: "297mm",
+            padding: "5mm",
+            boxSizing: "border-box",
+        }}> 
       {/* left side */}
-      <div className='w-[45%] p-5 mx-auto bg-gray-100 rounded-tl-2xl'>
+      <div className='p-5 mx-auto bg-gray-100 rounded-tl-2xl'>
        <p className='text-3xl uppercase text-gray-600'>Kelly</p>
        <p className='text-3xl mb-3 uppercase text-gray-600'>BlackWell</p>
        <p className='font-semibold mb-5 text-gray-600'>Administrative Assistant</p>
@@ -66,7 +71,7 @@ const Resume3 = () => {
        </p>
       </div>
       {/* right side */}
-      <div className='w-[50%] mx-auto'>
+      <div className='mx-auto'>
        <p className='text-[17px] font-medium uppercase pt-2 text-gray-600 pb-1 tracking-widest'>Summary</p>
        <p className='list-disc list-inside space-y-1 border-b-2 border-gray-300'></p>
        <p className='list-disc list-inside space-y-1 pt-3 text-[15px] pb-2 text-gray-500'>

@@ -729,7 +729,7 @@ export default function FinalizeForm() {
 
   return (
     <section>
-      <div className="p-4 bg-white h-[500px] overflow-y-auto scrollbar-thin scrollbar-thumb-blue-500 scrollbar-track-gray-200 scrollbar-thumb-rounded-md space-y-4 relative">
+      <div className="p-4 bg-white h-[500px]  scrollbar-thin scrollbar-thumb-blue-500 scrollbar-track-gray-200 scrollbar-thumb-rounded-md space-y-4 relative">
 
 
 

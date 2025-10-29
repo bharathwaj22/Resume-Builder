@@ -1,5 +1,5 @@
 import React from 'react'
-import pic from "../assets/images/home1.png"
+import pic from "../assets/images/contact-us.webp"
 
 const Resume2 = () => {
   
@@ -25,18 +25,18 @@ const Resume2 = () => {
     "Worked closely with project managers to monitor progress on major initiatives, ensuring projects were delivered on time and within budget.",
   ]
   return (
-    <div className=" bg-white border border-gray-100" style={{
-      width: "210mm",
-      // height: "297mm",
-      padding: "5mm",
-      boxSizing: "border-box",
-    }}>
+    <div className=" bg-white border border-gray-100 mx-auto" style={{
+            width: "210mm",
+            // height: "297mm",
+            padding: "5mm",
+            boxSizing: "border-box",
+        }}> 
         {/* header */}
-        <div className='flex  header py-5 rounded-tl-3xl rounded-tr-3xl border-b border-gray-300 mx-auto'>
-        <div className="flex justify-center items-center  ">
+        <div className='flex header py-5 rounded-tl-3xl rounded-tr-3xl border-b border-gray-300 mx-auto'>
+        <div className="flex justify-center items-center w-[22%] ">
           <img className='w-28 h-40 object-cover shadow-sm' src={pic} alt="profile"/>
         </div>
-        <div className=" pl-10">
+        <div className="w-[68%] pl-10">
           <p className='text-3xl tracking-wide text-gray-800 leading-tight'>Samanthan Williams</p>
           <p className='text-xs font-serif py-1 text-[11px] font-semibold mt-1 mb-1'>Senior Analyst</p>
           <p className='text-xs py-4 text-[12px] leading-snug '>New York, NY, 10001</p>
@@ -45,9 +45,9 @@ const Resume2 = () => {
         </div>
         </div>
         {/* body*/}
-        <div className='flex  gap-3 mx-auto'>
+        <div className='flex gap-3 mx-auto'>
             {/* left side */}
-            <div className="w-[60%] pt-5 pl-5">
+            <div className="pt-5 pl-5">
               {/* summary */}
              <div className='mb-5'>
               <p className="text-[15px] font-semibold underline underline-offset-4 decoration-2 decoration-gray-800 mb-2 tracking-wide">SUMMARY</p>

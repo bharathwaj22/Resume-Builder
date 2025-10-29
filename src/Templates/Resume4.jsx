@@ -19,7 +19,12 @@ const Resume4 = () => {
         "Sought to understand and protect the interest of persons and a=businesses.",
     ]
   return (
-    <div className='w-[50%] mx-auto font-serif mt-5'>
+    <div className=" bg-white border border-gray-100 mx-auto" style={{
+            width: "210mm",
+            // height: "297mm",
+            padding: "5mm",
+            boxSizing: "border-box",
+        }}> 
         {/* header */}
      <div className=''>
       <p className='text-center text-[19px] font-bold uppercase'>howard jones</p>
